@@ -1,0 +1,98 @@
+grammar de.schneidertim.requirements.nlp.ReqLNG with org.eclipse.xtext.common.Terminals
+
+generate reqLNG "http://www.schneidertim.de/requirements/nlp/ReqLNG"
+
+// Initial Rule:
+Entities:
+	(actor+=Actor | system+=System | requirement+=Requirement)* glossary=Glossary
+;
+// For defining Actors and Systems 
+Actor: 
+'Actor' ':' name=Text description = Description;
+
+System: 
+'System' ':' name=Text description = Description;
+
+Description: 
+'Description' ':' text+=SentenceWithReferences+;
+
+Text: 
+	( 'To' | 'to' | 'A' | 'a' | 'the' | 'The' | WORD | ANY_OTHER)+
+; 
+
+SentenceWithReferences: 
+	textWithReferences=TextWithReferences punctuation=('.' | '!' | '?')
+;
+
+TextWithReferences:
+   (onlyRefs+=[Entities|STRING]+ | 
+   refBefore+=[Entities|STRING]* text+=Text after+=ReferenceCombination* finalRef+=[Entities|STRING]*);
+
+ReferenceCombination: (refs+=[Entities|STRING]+ text+=Text);
+
+// For defining Requirements 
+// Use your defined boilerplate here:
+//(this one is similar to https://requirementstechniques.wordpress.com/documentation/requirements-templates/)
+
+Requirement:
+    ConditionalRequirement | UnconditionalRequirement;
+
+ConditionalRequirement:
+    (condition=Precondition)? system=[System|STRING] liability=Liability end=RequirementEnd;
+
+UnconditionalRequirement:
+    the='The' system=[System|STRING] liability=Liability end=RequirementEnd;
+
+Precondition:
+    conditional=Conditional condition=TextWithReferences;
+    
+Conditional:
+	"If"
+;
+
+enum Liability:
+    shall | should | will;
+
+ActorInteraction:
+    provide='provide' the1='the'? actor=[Actor|STRING] ^with='with' the2='the' ability='ability' to='to';
+RequirementEnd:
+    ai=ActorInteraction? objectWithDetails=TextWithConceptsOrSynonyms '.';
+    
+TextWithConceptsOrSynonyms:
+	 (
+	 	(onlyRefs+=[ConceptOrSynonym|STRING])+
+	 	| refBefore+=[ConceptOrSynonym|STRING]* text+=Text after+=ConceptCombination* finalRef+=[ConceptOrSynonym|STRING]*
+	 );
+
+ConceptCombination:
+	(concepts+=[ConceptOrSynonym|STRING]+ text+=Text);
+
+// For creating a Glossary with Concepts and Functions    
+Glossary:
+    {Glossary} 'Glossary' concepts+=(Concept)*;
+
+Concept returns ConceptOrSynonym:
+    Function  | DomainObject ;
+
+Function:
+    'Function' ':' name=Text
+    ('Synonyms' ':' synonyms+=FunctionSynonym (',' synonyms+=FunctionSynonym)*)?
+    ('Description' ':' description+=SentenceWithReferences*)?;
+
+DomainObject:
+    'Object' ':' name=Text
+    ('Synonyms' ':' synonyms+=DomainObjectSynonym (',' synonyms+=DomainObjectSynonym)*)?
+    ('Description' ':' description+=SentenceWithReferences+)?
+    //('Properties' ':' properties+=Property (',' properties+=Property)*)?
+    ;
+
+FunctionSynonym returns ConceptOrSynonym:
+    name=Text;
+
+DomainObjectSynonym returns ConceptOrSynonym:
+    name=Text;
+    
+terminal WORD:
+	('a'..'z' | 'A'..'Z') ('a'..'z' | 'A'..'Z' | '0'..'9' | '-' | '_')+
+;
+    
