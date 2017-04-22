@@ -4,7 +4,7 @@
 package de.schneidertim.requirements.nlp.tests
 
 import com.google.inject.Inject
-import de.schneidertim.requirements.nlp.reqLNG.Entities
+import de.schneidertim.requirements.nlp.reqLNG.RequirementDocument
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.util.ParseHelper
@@ -17,12 +17,31 @@ import org.junit.runner.RunWith
 class ReqLNGParsingTest{
 
 	@Inject
-	ParseHelper<Entities> parseHelper
+	ParseHelper<RequirementDocument> parseHelper
 
 	@Test 
 	def void loadModel() {
 		val result = parseHelper.parse('''
-			Hello Xtext!
+			Actor: Client
+				Description: Some human user.
+			 
+			System:PrintServer
+				Description: Some PrintServer.
+			 
+				The "PrintServer" will provide the "Client" with the ability to "print"  "documents".
+			 
+			System:HTTPServer
+				Description: Some HTTP Server.
+				The "HTTPServer" will provide the "Client" with the ability to "post a Document".
+			 
+			Glossary
+				Object: document
+				Synonyms: documents
+			 
+				Function:print
+				Description: print a document.
+				
+				Function: post a Document
 		''')
 		Assert.assertNotNull(result)
 	}

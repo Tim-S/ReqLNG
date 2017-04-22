@@ -4,10 +4,14 @@
 package de.schneidertim.requirements.nlp.tests;
 
 import com.google.inject.Inject;
+import de.schneidertim.requirements.nlp.reqLNG.RequirementDocument;
 import de.schneidertim.requirements.nlp.tests.ReqLNGInjectorProvider;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
 import org.eclipse.xtext.junit4.util.ParseHelper;
+import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -16,11 +20,66 @@ import org.junit.runner.RunWith;
 @SuppressWarnings("all")
 public class ReqLNGParsingTest {
   @Inject
-  private /* ParseHelper<Entities> */Object parseHelper;
+  private ParseHelper<RequirementDocument> parseHelper;
   
   @Test
   public void loadModel() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field ReqLNGParsingTest.parseHelper refers to the missing type Entities");
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("Actor: Client");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("Description: Some human user.");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.newLine();
+      _builder.append("System:PrintServer");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("Description: Some PrintServer.");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("The \"PrintServer\" will provide the \"Client\" with the ability to \"print\"  \"documents\".");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.newLine();
+      _builder.append("System:HTTPServer");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("Description: Some HTTP Server.");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("The \"HTTPServer\" will provide the \"Client\" with the ability to \"post a Document\".");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.newLine();
+      _builder.append("Glossary");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("Object: document");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("Synonyms: documents");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("Function:print");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("Description: print a document.");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("Function: post a Document");
+      _builder.newLine();
+      final RequirementDocument result = this.parseHelper.parse(_builder);
+      Assert.assertNotNull(result);
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
   }
 }
