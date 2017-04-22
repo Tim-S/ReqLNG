@@ -11,20 +11,17 @@
       <genEnumLiterals ecoreEnumLiteral="ReqLNG.ecore#//Liability/should"/>
       <genEnumLiterals ecoreEnumLiteral="ReqLNG.ecore#//Liability/will"/>
     </genEnums>
-    <genClasses ecoreClass="ReqLNG.ecore#//Entities">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ReqLNG.ecore#//Entities/actor"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ReqLNG.ecore#//Entities/system"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ReqLNG.ecore#//Entities/requirement"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ReqLNG.ecore#//Entities/glossary"/>
+    <genClasses ecoreClass="ReqLNG.ecore#//RequirementDocument">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ReqLNG.ecore#//RequirementDocument/entities"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ReqLNG.ecore#//RequirementDocument/requirement"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ReqLNG.ecore#//RequirementDocument/glossary"/>
     </genClasses>
-    <genClasses ecoreClass="ReqLNG.ecore#//Actor">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ReqLNG.ecore#//Actor/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ReqLNG.ecore#//Actor/description"/>
+    <genClasses ecoreClass="ReqLNG.ecore#//Entity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ReqLNG.ecore#//Entity/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ReqLNG.ecore#//Entity/description"/>
     </genClasses>
-    <genClasses ecoreClass="ReqLNG.ecore#//System">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ReqLNG.ecore#//System/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ReqLNG.ecore#//System/description"/>
-    </genClasses>
+    <genClasses ecoreClass="ReqLNG.ecore#//Actor"/>
+    <genClasses ecoreClass="ReqLNG.ecore#//System"/>
     <genClasses ecoreClass="ReqLNG.ecore#//Description">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ReqLNG.ecore#//Description/text"/>
     </genClasses>

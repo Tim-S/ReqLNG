@@ -24,13 +24,22 @@ public interface ReqLNGFactory extends EFactory
   ReqLNGFactory eINSTANCE = de.schneidertim.requirements.nlp.reqLNG.impl.ReqLNGFactoryImpl.init();
 
   /**
-   * Returns a new object of class '<em>Entities</em>'.
+   * Returns a new object of class '<em>Requirement Document</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Entities</em>'.
+   * @return a new object of class '<em>Requirement Document</em>'.
    * @generated
    */
-  Entities createEntities();
+  RequirementDocument createRequirementDocument();
+
+  /**
+   * Returns a new object of class '<em>Entity</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Entity</em>'.
+   * @generated
+   */
+  Entity createEntity();
 
   /**
    * Returns a new object of class '<em>Actor</em>'.

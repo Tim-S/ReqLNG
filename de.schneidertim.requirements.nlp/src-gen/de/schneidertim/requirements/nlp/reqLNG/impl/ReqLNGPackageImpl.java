@@ -10,7 +10,7 @@ import de.schneidertim.requirements.nlp.reqLNG.ConceptOrSynonym;
 import de.schneidertim.requirements.nlp.reqLNG.ConditionalRequirement;
 import de.schneidertim.requirements.nlp.reqLNG.Description;
 import de.schneidertim.requirements.nlp.reqLNG.DomainObject;
-import de.schneidertim.requirements.nlp.reqLNG.Entities;
+import de.schneidertim.requirements.nlp.reqLNG.Entity;
 import de.schneidertim.requirements.nlp.reqLNG.Function;
 import de.schneidertim.requirements.nlp.reqLNG.Glossary;
 import de.schneidertim.requirements.nlp.reqLNG.Liability;
@@ -19,6 +19,7 @@ import de.schneidertim.requirements.nlp.reqLNG.ReferenceCombination;
 import de.schneidertim.requirements.nlp.reqLNG.ReqLNGFactory;
 import de.schneidertim.requirements.nlp.reqLNG.ReqLNGPackage;
 import de.schneidertim.requirements.nlp.reqLNG.Requirement;
+import de.schneidertim.requirements.nlp.reqLNG.RequirementDocument;
 import de.schneidertim.requirements.nlp.reqLNG.RequirementEnd;
 import de.schneidertim.requirements.nlp.reqLNG.SentenceWithReferences;
 import de.schneidertim.requirements.nlp.reqLNG.TextWithConceptsOrSynonyms;
@@ -46,7 +47,14 @@ public class ReqLNGPackageImpl extends EPackageImpl implements ReqLNGPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass entitiesEClass = null;
+  private EClass requirementDocumentEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass entityEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -249,9 +257,9 @@ public class ReqLNGPackageImpl extends EPackageImpl implements ReqLNGPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getEntities()
+  public EClass getRequirementDocument()
   {
-    return entitiesEClass;
+    return requirementDocumentEClass;
   }
 
   /**
@@ -259,9 +267,9 @@ public class ReqLNGPackageImpl extends EPackageImpl implements ReqLNGPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getEntities_Actor()
+  public EReference getRequirementDocument_Entities()
   {
-    return (EReference)entitiesEClass.getEStructuralFeatures().get(0);
+    return (EReference)requirementDocumentEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -269,9 +277,9 @@ public class ReqLNGPackageImpl extends EPackageImpl implements ReqLNGPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getEntities_System()
+  public EReference getRequirementDocument_Requirement()
   {
-    return (EReference)entitiesEClass.getEStructuralFeatures().get(1);
+    return (EReference)requirementDocumentEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -279,9 +287,9 @@ public class ReqLNGPackageImpl extends EPackageImpl implements ReqLNGPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getEntities_Requirement()
+  public EReference getRequirementDocument_Glossary()
   {
-    return (EReference)entitiesEClass.getEStructuralFeatures().get(2);
+    return (EReference)requirementDocumentEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -289,9 +297,29 @@ public class ReqLNGPackageImpl extends EPackageImpl implements ReqLNGPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getEntities_Glossary()
+  public EClass getEntity()
   {
-    return (EReference)entitiesEClass.getEStructuralFeatures().get(3);
+    return entityEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getEntity_Name()
+  {
+    return (EAttribute)entityEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getEntity_Description()
+  {
+    return (EReference)entityEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -309,49 +337,9 @@ public class ReqLNGPackageImpl extends EPackageImpl implements ReqLNGPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getActor_Name()
-  {
-    return (EAttribute)actorEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getActor_Description()
-  {
-    return (EReference)actorEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getSystem()
   {
     return systemEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getSystem_Name()
-  {
-    return (EAttribute)systemEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getSystem_Description()
-  {
-    return (EReference)systemEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -924,19 +912,18 @@ public class ReqLNGPackageImpl extends EPackageImpl implements ReqLNGPackage
     isCreated = true;
 
     // Create classes and their features
-    entitiesEClass = createEClass(ENTITIES);
-    createEReference(entitiesEClass, ENTITIES__ACTOR);
-    createEReference(entitiesEClass, ENTITIES__SYSTEM);
-    createEReference(entitiesEClass, ENTITIES__REQUIREMENT);
-    createEReference(entitiesEClass, ENTITIES__GLOSSARY);
+    requirementDocumentEClass = createEClass(REQUIREMENT_DOCUMENT);
+    createEReference(requirementDocumentEClass, REQUIREMENT_DOCUMENT__ENTITIES);
+    createEReference(requirementDocumentEClass, REQUIREMENT_DOCUMENT__REQUIREMENT);
+    createEReference(requirementDocumentEClass, REQUIREMENT_DOCUMENT__GLOSSARY);
+
+    entityEClass = createEClass(ENTITY);
+    createEAttribute(entityEClass, ENTITY__NAME);
+    createEReference(entityEClass, ENTITY__DESCRIPTION);
 
     actorEClass = createEClass(ACTOR);
-    createEAttribute(actorEClass, ACTOR__NAME);
-    createEReference(actorEClass, ACTOR__DESCRIPTION);
 
     systemEClass = createEClass(SYSTEM);
-    createEAttribute(systemEClass, SYSTEM__NAME);
-    createEReference(systemEClass, SYSTEM__DESCRIPTION);
 
     descriptionEClass = createEClass(DESCRIPTION);
     createEReference(descriptionEClass, DESCRIPTION__TEXT);
@@ -1040,25 +1027,26 @@ public class ReqLNGPackageImpl extends EPackageImpl implements ReqLNGPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    actorEClass.getESuperTypes().add(this.getEntity());
+    systemEClass.getESuperTypes().add(this.getEntity());
     conditionalRequirementEClass.getESuperTypes().add(this.getRequirement());
     unconditionalRequirementEClass.getESuperTypes().add(this.getRequirement());
     functionEClass.getESuperTypes().add(this.getConceptOrSynonym());
     domainObjectEClass.getESuperTypes().add(this.getConceptOrSynonym());
 
     // Initialize classes and features; add operations and parameters
-    initEClass(entitiesEClass, Entities.class, "Entities", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getEntities_Actor(), this.getActor(), null, "actor", null, 0, -1, Entities.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getEntities_System(), this.getSystem(), null, "system", null, 0, -1, Entities.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getEntities_Requirement(), this.getRequirement(), null, "requirement", null, 0, -1, Entities.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getEntities_Glossary(), this.getGlossary(), null, "glossary", null, 0, 1, Entities.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(requirementDocumentEClass, RequirementDocument.class, "RequirementDocument", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getRequirementDocument_Entities(), this.getEntity(), null, "entities", null, 0, -1, RequirementDocument.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRequirementDocument_Requirement(), this.getRequirement(), null, "requirement", null, 0, -1, RequirementDocument.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRequirementDocument_Glossary(), this.getGlossary(), null, "glossary", null, 0, 1, RequirementDocument.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(entityEClass, Entity.class, "Entity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getEntity_Name(), ecorePackage.getEString(), "name", null, 0, 1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEntity_Description(), this.getDescription(), null, "description", null, 0, 1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(actorEClass, Actor.class, "Actor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getActor_Name(), ecorePackage.getEString(), "name", null, 0, 1, Actor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getActor_Description(), this.getDescription(), null, "description", null, 0, 1, Actor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(systemEClass, de.schneidertim.requirements.nlp.reqLNG.System.class, "System", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getSystem_Name(), ecorePackage.getEString(), "name", null, 0, 1, de.schneidertim.requirements.nlp.reqLNG.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getSystem_Description(), this.getDescription(), null, "description", null, 0, 1, de.schneidertim.requirements.nlp.reqLNG.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(descriptionEClass, Description.class, "Description", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getDescription_Text(), this.getSentenceWithReferences(), null, "text", null, 0, -1, Description.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1068,14 +1056,14 @@ public class ReqLNGPackageImpl extends EPackageImpl implements ReqLNGPackage
     initEAttribute(getSentenceWithReferences_Punctuation(), ecorePackage.getEString(), "punctuation", null, 0, 1, SentenceWithReferences.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(textWithReferencesEClass, TextWithReferences.class, "TextWithReferences", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getTextWithReferences_OnlyRefs(), this.getEntities(), null, "onlyRefs", null, 0, -1, TextWithReferences.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getTextWithReferences_RefBefore(), this.getEntities(), null, "refBefore", null, 0, -1, TextWithReferences.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTextWithReferences_OnlyRefs(), this.getEntity(), null, "onlyRefs", null, 0, -1, TextWithReferences.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTextWithReferences_RefBefore(), this.getEntity(), null, "refBefore", null, 0, -1, TextWithReferences.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getTextWithReferences_Text(), ecorePackage.getEString(), "text", null, 0, -1, TextWithReferences.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTextWithReferences_After(), this.getReferenceCombination(), null, "after", null, 0, -1, TextWithReferences.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getTextWithReferences_FinalRef(), this.getEntities(), null, "finalRef", null, 0, -1, TextWithReferences.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTextWithReferences_FinalRef(), this.getEntity(), null, "finalRef", null, 0, -1, TextWithReferences.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(referenceCombinationEClass, ReferenceCombination.class, "ReferenceCombination", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getReferenceCombination_Refs(), this.getEntities(), null, "refs", null, 0, -1, ReferenceCombination.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getReferenceCombination_Refs(), this.getEntity(), null, "refs", null, 0, -1, ReferenceCombination.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getReferenceCombination_Text(), ecorePackage.getEString(), "text", null, 0, -1, ReferenceCombination.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(requirementEClass, Requirement.class, "Requirement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

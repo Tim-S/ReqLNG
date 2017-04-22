@@ -3,77 +3,17 @@
  */
 package de.schneidertim.requirements.nlp.reqLNG;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Actor</b></em>'.
  * <!-- end-user-doc -->
  *
- * <p>
- * The following features are supported:
- * </p>
- * <ul>
- *   <li>{@link de.schneidertim.requirements.nlp.reqLNG.Actor#getName <em>Name</em>}</li>
- *   <li>{@link de.schneidertim.requirements.nlp.reqLNG.Actor#getDescription <em>Description</em>}</li>
- * </ul>
  *
  * @see de.schneidertim.requirements.nlp.reqLNG.ReqLNGPackage#getActor()
  * @model
  * @generated
  */
-public interface Actor extends EObject
+public interface Actor extends Entity
 {
-  /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see de.schneidertim.requirements.nlp.reqLNG.ReqLNGPackage#getActor_Name()
-   * @model
-   * @generated
-   */
-  String getName();
-
-  /**
-   * Sets the value of the '{@link de.schneidertim.requirements.nlp.reqLNG.Actor#getName <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
-   * @generated
-   */
-  void setName(String value);
-
-  /**
-   * Returns the value of the '<em><b>Description</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Description</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Description</em>' containment reference.
-   * @see #setDescription(Description)
-   * @see de.schneidertim.requirements.nlp.reqLNG.ReqLNGPackage#getActor_Description()
-   * @model containment="true"
-   * @generated
-   */
-  Description getDescription();
-
-  /**
-   * Sets the value of the '{@link de.schneidertim.requirements.nlp.reqLNG.Actor#getDescription <em>Description</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Description</em>' containment reference.
-   * @see #getDescription()
-   * @generated
-   */
-  void setDescription(Description value);
-
 } // Actor

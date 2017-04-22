@@ -27,53 +27,65 @@ import org.eclipse.xtext.service.GrammarProvider;
 @Singleton
 public class ReqLNGGrammarAccess extends AbstractGrammarElementFinder {
 	
-	public class EntitiesElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.schneidertim.requirements.nlp.ReqLNG.Entities");
+	public class RequirementDocumentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.schneidertim.requirements.nlp.ReqLNG.RequirementDocument");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
-		private final Assignment cActorAssignment_0_0 = (Assignment)cAlternatives_0.eContents().get(0);
-		private final RuleCall cActorActorParserRuleCall_0_0_0 = (RuleCall)cActorAssignment_0_0.eContents().get(0);
-		private final Assignment cSystemAssignment_0_1 = (Assignment)cAlternatives_0.eContents().get(1);
-		private final RuleCall cSystemSystemParserRuleCall_0_1_0 = (RuleCall)cSystemAssignment_0_1.eContents().get(0);
-		private final Assignment cRequirementAssignment_0_2 = (Assignment)cAlternatives_0.eContents().get(2);
-		private final RuleCall cRequirementRequirementParserRuleCall_0_2_0 = (RuleCall)cRequirementAssignment_0_2.eContents().get(0);
+		private final Assignment cEntitiesAssignment_0_0 = (Assignment)cAlternatives_0.eContents().get(0);
+		private final RuleCall cEntitiesEntityParserRuleCall_0_0_0 = (RuleCall)cEntitiesAssignment_0_0.eContents().get(0);
+		private final Assignment cRequirementAssignment_0_1 = (Assignment)cAlternatives_0.eContents().get(1);
+		private final RuleCall cRequirementRequirementParserRuleCall_0_1_0 = (RuleCall)cRequirementAssignment_0_1.eContents().get(0);
 		private final Assignment cGlossaryAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cGlossaryGlossaryParserRuleCall_1_0 = (RuleCall)cGlossaryAssignment_1.eContents().get(0);
 		
 		//// Initial Rule:
-		//Entities:
-		//	(actor+=Actor | system+=System | requirement+=Requirement)* glossary=Glossary;
+		//RequirementDocument:
+		//	(entities+=Entity | requirement+=Requirement)* glossary=Glossary;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//(actor+=Actor | system+=System | requirement+=Requirement)* glossary=Glossary
+		//(entities+=Entity | requirement+=Requirement)* glossary=Glossary
 		public Group getGroup() { return cGroup; }
 		
-		//(actor+=Actor | system+=System | requirement+=Requirement)*
+		//(entities+=Entity | requirement+=Requirement)*
 		public Alternatives getAlternatives_0() { return cAlternatives_0; }
 		
-		//actor+=Actor
-		public Assignment getActorAssignment_0_0() { return cActorAssignment_0_0; }
+		//entities+=Entity
+		public Assignment getEntitiesAssignment_0_0() { return cEntitiesAssignment_0_0; }
 		
-		//Actor
-		public RuleCall getActorActorParserRuleCall_0_0_0() { return cActorActorParserRuleCall_0_0_0; }
-		
-		//system+=System
-		public Assignment getSystemAssignment_0_1() { return cSystemAssignment_0_1; }
-		
-		//System
-		public RuleCall getSystemSystemParserRuleCall_0_1_0() { return cSystemSystemParserRuleCall_0_1_0; }
+		//Entity
+		public RuleCall getEntitiesEntityParserRuleCall_0_0_0() { return cEntitiesEntityParserRuleCall_0_0_0; }
 		
 		//requirement+=Requirement
-		public Assignment getRequirementAssignment_0_2() { return cRequirementAssignment_0_2; }
+		public Assignment getRequirementAssignment_0_1() { return cRequirementAssignment_0_1; }
 		
 		//Requirement
-		public RuleCall getRequirementRequirementParserRuleCall_0_2_0() { return cRequirementRequirementParserRuleCall_0_2_0; }
+		public RuleCall getRequirementRequirementParserRuleCall_0_1_0() { return cRequirementRequirementParserRuleCall_0_1_0; }
 		
 		//glossary=Glossary
 		public Assignment getGlossaryAssignment_1() { return cGlossaryAssignment_1; }
 		
 		//Glossary
 		public RuleCall getGlossaryGlossaryParserRuleCall_1_0() { return cGlossaryGlossaryParserRuleCall_1_0; }
+	}
+	public class EntityElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.schneidertim.requirements.nlp.ReqLNG.Entity");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cActorParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cSystemParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//// For defining Actors and Systems 
+		//Entity:
+		//	Actor | System;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//Actor | System
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//Actor
+		public RuleCall getActorParserRuleCall_0() { return cActorParserRuleCall_0; }
+		
+		//System
+		public RuleCall getSystemParserRuleCall_1() { return cSystemParserRuleCall_1; }
 	}
 	public class ActorElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.schneidertim.requirements.nlp.ReqLNG.Actor");
@@ -85,7 +97,6 @@ public class ReqLNGGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cDescriptionAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cDescriptionDescriptionParserRuleCall_3_0 = (RuleCall)cDescriptionAssignment_3.eContents().get(0);
 		
-		//// For defining Actors and Systems 
 		//Actor:
 		//	'Actor' ':' name=Text description=Description;
 		@Override public ParserRule getRule() { return rule; }
@@ -259,49 +270,49 @@ public class ReqLNGGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.schneidertim.requirements.nlp.ReqLNG.TextWithReferences");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Assignment cOnlyRefsAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
-		private final CrossReference cOnlyRefsEntitiesCrossReference_0_0 = (CrossReference)cOnlyRefsAssignment_0.eContents().get(0);
-		private final RuleCall cOnlyRefsEntitiesSTRINGTerminalRuleCall_0_0_1 = (RuleCall)cOnlyRefsEntitiesCrossReference_0_0.eContents().get(1);
+		private final CrossReference cOnlyRefsEntityCrossReference_0_0 = (CrossReference)cOnlyRefsAssignment_0.eContents().get(0);
+		private final RuleCall cOnlyRefsEntitySTRINGTerminalRuleCall_0_0_1 = (RuleCall)cOnlyRefsEntityCrossReference_0_0.eContents().get(1);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
 		private final Assignment cRefBeforeAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
-		private final CrossReference cRefBeforeEntitiesCrossReference_1_0_0 = (CrossReference)cRefBeforeAssignment_1_0.eContents().get(0);
-		private final RuleCall cRefBeforeEntitiesSTRINGTerminalRuleCall_1_0_0_1 = (RuleCall)cRefBeforeEntitiesCrossReference_1_0_0.eContents().get(1);
+		private final CrossReference cRefBeforeEntityCrossReference_1_0_0 = (CrossReference)cRefBeforeAssignment_1_0.eContents().get(0);
+		private final RuleCall cRefBeforeEntitySTRINGTerminalRuleCall_1_0_0_1 = (RuleCall)cRefBeforeEntityCrossReference_1_0_0.eContents().get(1);
 		private final Assignment cTextAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final RuleCall cTextTextParserRuleCall_1_1_0 = (RuleCall)cTextAssignment_1_1.eContents().get(0);
 		private final Assignment cAfterAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
 		private final RuleCall cAfterReferenceCombinationParserRuleCall_1_2_0 = (RuleCall)cAfterAssignment_1_2.eContents().get(0);
 		private final Assignment cFinalRefAssignment_1_3 = (Assignment)cGroup_1.eContents().get(3);
-		private final CrossReference cFinalRefEntitiesCrossReference_1_3_0 = (CrossReference)cFinalRefAssignment_1_3.eContents().get(0);
-		private final RuleCall cFinalRefEntitiesSTRINGTerminalRuleCall_1_3_0_1 = (RuleCall)cFinalRefEntitiesCrossReference_1_3_0.eContents().get(1);
+		private final CrossReference cFinalRefEntityCrossReference_1_3_0 = (CrossReference)cFinalRefAssignment_1_3.eContents().get(0);
+		private final RuleCall cFinalRefEntitySTRINGTerminalRuleCall_1_3_0_1 = (RuleCall)cFinalRefEntityCrossReference_1_3_0.eContents().get(1);
 		
 		//TextWithReferences:
-		//	onlyRefs+=[Entities|STRING]+ | refBefore+=[Entities|STRING]* text+=Text after+=ReferenceCombination*
-		//	finalRef+=[Entities|STRING]*;
+		//	onlyRefs+=[Entity|STRING]+ | refBefore+=[Entity|STRING]* text+=Text after+=ReferenceCombination*
+		//	finalRef+=[Entity|STRING]*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//onlyRefs+=[Entities|STRING]+ | refBefore+=[Entities|STRING]* text+=Text after+=ReferenceCombination*
-		//finalRef+=[Entities|STRING]*
+		//onlyRefs+=[Entity|STRING]+ | refBefore+=[Entity|STRING]* text+=Text after+=ReferenceCombination*
+		//finalRef+=[Entity|STRING]*
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//onlyRefs+=[Entities|STRING]+
+		//onlyRefs+=[Entity|STRING]+
 		public Assignment getOnlyRefsAssignment_0() { return cOnlyRefsAssignment_0; }
 		
-		//[Entities|STRING]
-		public CrossReference getOnlyRefsEntitiesCrossReference_0_0() { return cOnlyRefsEntitiesCrossReference_0_0; }
+		//[Entity|STRING]
+		public CrossReference getOnlyRefsEntityCrossReference_0_0() { return cOnlyRefsEntityCrossReference_0_0; }
 		
 		//STRING
-		public RuleCall getOnlyRefsEntitiesSTRINGTerminalRuleCall_0_0_1() { return cOnlyRefsEntitiesSTRINGTerminalRuleCall_0_0_1; }
+		public RuleCall getOnlyRefsEntitySTRINGTerminalRuleCall_0_0_1() { return cOnlyRefsEntitySTRINGTerminalRuleCall_0_0_1; }
 		
-		//refBefore+=[Entities|STRING]* text+=Text after+=ReferenceCombination* finalRef+=[Entities|STRING]*
+		//refBefore+=[Entity|STRING]* text+=Text after+=ReferenceCombination* finalRef+=[Entity|STRING]*
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//refBefore+=[Entities|STRING]*
+		//refBefore+=[Entity|STRING]*
 		public Assignment getRefBeforeAssignment_1_0() { return cRefBeforeAssignment_1_0; }
 		
-		//[Entities|STRING]
-		public CrossReference getRefBeforeEntitiesCrossReference_1_0_0() { return cRefBeforeEntitiesCrossReference_1_0_0; }
+		//[Entity|STRING]
+		public CrossReference getRefBeforeEntityCrossReference_1_0_0() { return cRefBeforeEntityCrossReference_1_0_0; }
 		
 		//STRING
-		public RuleCall getRefBeforeEntitiesSTRINGTerminalRuleCall_1_0_0_1() { return cRefBeforeEntitiesSTRINGTerminalRuleCall_1_0_0_1; }
+		public RuleCall getRefBeforeEntitySTRINGTerminalRuleCall_1_0_0_1() { return cRefBeforeEntitySTRINGTerminalRuleCall_1_0_0_1; }
 		
 		//text+=Text
 		public Assignment getTextAssignment_1_1() { return cTextAssignment_1_1; }
@@ -315,39 +326,39 @@ public class ReqLNGGrammarAccess extends AbstractGrammarElementFinder {
 		//ReferenceCombination
 		public RuleCall getAfterReferenceCombinationParserRuleCall_1_2_0() { return cAfterReferenceCombinationParserRuleCall_1_2_0; }
 		
-		//finalRef+=[Entities|STRING]*
+		//finalRef+=[Entity|STRING]*
 		public Assignment getFinalRefAssignment_1_3() { return cFinalRefAssignment_1_3; }
 		
-		//[Entities|STRING]
-		public CrossReference getFinalRefEntitiesCrossReference_1_3_0() { return cFinalRefEntitiesCrossReference_1_3_0; }
+		//[Entity|STRING]
+		public CrossReference getFinalRefEntityCrossReference_1_3_0() { return cFinalRefEntityCrossReference_1_3_0; }
 		
 		//STRING
-		public RuleCall getFinalRefEntitiesSTRINGTerminalRuleCall_1_3_0_1() { return cFinalRefEntitiesSTRINGTerminalRuleCall_1_3_0_1; }
+		public RuleCall getFinalRefEntitySTRINGTerminalRuleCall_1_3_0_1() { return cFinalRefEntitySTRINGTerminalRuleCall_1_3_0_1; }
 	}
 	public class ReferenceCombinationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.schneidertim.requirements.nlp.ReqLNG.ReferenceCombination");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cRefsAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final CrossReference cRefsEntitiesCrossReference_0_0 = (CrossReference)cRefsAssignment_0.eContents().get(0);
-		private final RuleCall cRefsEntitiesSTRINGTerminalRuleCall_0_0_1 = (RuleCall)cRefsEntitiesCrossReference_0_0.eContents().get(1);
+		private final CrossReference cRefsEntityCrossReference_0_0 = (CrossReference)cRefsAssignment_0.eContents().get(0);
+		private final RuleCall cRefsEntitySTRINGTerminalRuleCall_0_0_1 = (RuleCall)cRefsEntityCrossReference_0_0.eContents().get(1);
 		private final Assignment cTextAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cTextTextParserRuleCall_1_0 = (RuleCall)cTextAssignment_1.eContents().get(0);
 		
 		//ReferenceCombination:
-		//	refs+=[Entities|STRING]+ text+=Text;
+		//	refs+=[Entity|STRING]+ text+=Text;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//refs+=[Entities|STRING]+ text+=Text
+		//refs+=[Entity|STRING]+ text+=Text
 		public Group getGroup() { return cGroup; }
 		
-		//refs+=[Entities|STRING]+
+		//refs+=[Entity|STRING]+
 		public Assignment getRefsAssignment_0() { return cRefsAssignment_0; }
 		
-		//[Entities|STRING]
-		public CrossReference getRefsEntitiesCrossReference_0_0() { return cRefsEntitiesCrossReference_0_0; }
+		//[Entity|STRING]
+		public CrossReference getRefsEntityCrossReference_0_0() { return cRefsEntityCrossReference_0_0; }
 		
 		//STRING
-		public RuleCall getRefsEntitiesSTRINGTerminalRuleCall_0_0_1() { return cRefsEntitiesSTRINGTerminalRuleCall_0_0_1; }
+		public RuleCall getRefsEntitySTRINGTerminalRuleCall_0_0_1() { return cRefsEntitySTRINGTerminalRuleCall_0_0_1; }
 		
 		//text+=Text
 		public Assignment getTextAssignment_1() { return cTextAssignment_1; }
@@ -997,7 +1008,8 @@ public class ReqLNGGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getWillWillKeyword_2_0() { return cWillWillKeyword_2_0; }
 	}
 	
-	private final EntitiesElements pEntities;
+	private final RequirementDocumentElements pRequirementDocument;
+	private final EntityElements pEntity;
 	private final ActorElements pActor;
 	private final SystemElements pSystem;
 	private final DescriptionElements pDescription;
@@ -1032,7 +1044,8 @@ public class ReqLNGGrammarAccess extends AbstractGrammarElementFinder {
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
-		this.pEntities = new EntitiesElements();
+		this.pRequirementDocument = new RequirementDocumentElements();
+		this.pEntity = new EntityElements();
 		this.pActor = new ActorElements();
 		this.pSystem = new SystemElements();
 		this.pDescription = new DescriptionElements();
@@ -1087,17 +1100,27 @@ public class ReqLNGGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//// Initial Rule:
-	//Entities:
-	//	(actor+=Actor | system+=System | requirement+=Requirement)* glossary=Glossary;
-	public EntitiesElements getEntitiesAccess() {
-		return pEntities;
+	//RequirementDocument:
+	//	(entities+=Entity | requirement+=Requirement)* glossary=Glossary;
+	public RequirementDocumentElements getRequirementDocumentAccess() {
+		return pRequirementDocument;
 	}
 	
-	public ParserRule getEntitiesRule() {
-		return getEntitiesAccess().getRule();
+	public ParserRule getRequirementDocumentRule() {
+		return getRequirementDocumentAccess().getRule();
 	}
 	
 	//// For defining Actors and Systems 
+	//Entity:
+	//	Actor | System;
+	public EntityElements getEntityAccess() {
+		return pEntity;
+	}
+	
+	public ParserRule getEntityRule() {
+		return getEntityAccess().getRule();
+	}
+	
 	//Actor:
 	//	'Actor' ':' name=Text description=Description;
 	public ActorElements getActorAccess() {
@@ -1149,8 +1172,8 @@ public class ReqLNGGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//TextWithReferences:
-	//	onlyRefs+=[Entities|STRING]+ | refBefore+=[Entities|STRING]* text+=Text after+=ReferenceCombination*
-	//	finalRef+=[Entities|STRING]*;
+	//	onlyRefs+=[Entity|STRING]+ | refBefore+=[Entity|STRING]* text+=Text after+=ReferenceCombination*
+	//	finalRef+=[Entity|STRING]*;
 	public TextWithReferencesElements getTextWithReferencesAccess() {
 		return pTextWithReferences;
 	}
@@ -1160,7 +1183,7 @@ public class ReqLNGGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//ReferenceCombination:
-	//	refs+=[Entities|STRING]+ text+=Text;
+	//	refs+=[Entity|STRING]+ text+=Text;
 	public ReferenceCombinationElements getReferenceCombinationAccess() {
 		return pReferenceCombination;
 	}

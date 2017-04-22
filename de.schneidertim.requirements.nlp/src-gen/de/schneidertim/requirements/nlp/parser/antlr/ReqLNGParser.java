@@ -27,7 +27,7 @@ public class ReqLNGParser extends AbstractAntlrParser {
 
 	@Override 
 	protected String getDefaultRuleName() {
-		return "Entities";
+		return "RequirementDocument";
 	}
 
 	public ReqLNGGrammarAccess getGrammarAccess() {

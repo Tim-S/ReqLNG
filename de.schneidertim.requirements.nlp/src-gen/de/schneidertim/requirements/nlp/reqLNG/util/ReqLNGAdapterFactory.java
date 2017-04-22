@@ -10,13 +10,14 @@ import de.schneidertim.requirements.nlp.reqLNG.ConceptOrSynonym;
 import de.schneidertim.requirements.nlp.reqLNG.ConditionalRequirement;
 import de.schneidertim.requirements.nlp.reqLNG.Description;
 import de.schneidertim.requirements.nlp.reqLNG.DomainObject;
-import de.schneidertim.requirements.nlp.reqLNG.Entities;
+import de.schneidertim.requirements.nlp.reqLNG.Entity;
 import de.schneidertim.requirements.nlp.reqLNG.Function;
 import de.schneidertim.requirements.nlp.reqLNG.Glossary;
 import de.schneidertim.requirements.nlp.reqLNG.Precondition;
 import de.schneidertim.requirements.nlp.reqLNG.ReferenceCombination;
 import de.schneidertim.requirements.nlp.reqLNG.ReqLNGPackage;
 import de.schneidertim.requirements.nlp.reqLNG.Requirement;
+import de.schneidertim.requirements.nlp.reqLNG.RequirementDocument;
 import de.schneidertim.requirements.nlp.reqLNG.RequirementEnd;
 import de.schneidertim.requirements.nlp.reqLNG.SentenceWithReferences;
 import de.schneidertim.requirements.nlp.reqLNG.TextWithConceptsOrSynonyms;
@@ -94,9 +95,14 @@ public class ReqLNGAdapterFactory extends AdapterFactoryImpl
     new ReqLNGSwitch<Adapter>()
     {
       @Override
-      public Adapter caseEntities(Entities object)
+      public Adapter caseRequirementDocument(RequirementDocument object)
       {
-        return createEntitiesAdapter();
+        return createRequirementDocumentAdapter();
+      }
+      @Override
+      public Adapter caseEntity(Entity object)
+      {
+        return createEntityAdapter();
       }
       @Override
       public Adapter caseActor(Actor object)
@@ -211,16 +217,31 @@ public class ReqLNGAdapterFactory extends AdapterFactoryImpl
 
 
   /**
-   * Creates a new adapter for an object of class '{@link de.schneidertim.requirements.nlp.reqLNG.Entities <em>Entities</em>}'.
+   * Creates a new adapter for an object of class '{@link de.schneidertim.requirements.nlp.reqLNG.RequirementDocument <em>Requirement Document</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.schneidertim.requirements.nlp.reqLNG.Entities
+   * @see de.schneidertim.requirements.nlp.reqLNG.RequirementDocument
    * @generated
    */
-  public Adapter createEntitiesAdapter()
+  public Adapter createRequirementDocumentAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.schneidertim.requirements.nlp.reqLNG.Entity <em>Entity</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.schneidertim.requirements.nlp.reqLNG.Entity
+   * @generated
+   */
+  public Adapter createEntityAdapter()
   {
     return null;
   }

@@ -3,7 +3,7 @@
  */
 package de.schneidertim.requirements.nlp.reqLNG.impl;
 
-import de.schneidertim.requirements.nlp.reqLNG.Entities;
+import de.schneidertim.requirements.nlp.reqLNG.Entity;
 import de.schneidertim.requirements.nlp.reqLNG.ReferenceCombination;
 import de.schneidertim.requirements.nlp.reqLNG.ReqLNGPackage;
 
@@ -42,7 +42,7 @@ public class ReferenceCombinationImpl extends MinimalEObjectImpl.Container imple
    * @generated
    * @ordered
    */
-  protected EList<Entities> refs;
+  protected EList<Entity> refs;
 
   /**
    * The cached value of the '{@link #getText() <em>Text</em>}' attribute list.
@@ -80,11 +80,11 @@ public class ReferenceCombinationImpl extends MinimalEObjectImpl.Container imple
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Entities> getRefs()
+  public EList<Entity> getRefs()
   {
     if (refs == null)
     {
-      refs = new EObjectResolvingEList<Entities>(Entities.class, this, ReqLNGPackage.REFERENCE_COMBINATION__REFS);
+      refs = new EObjectResolvingEList<Entity>(Entity.class, this, ReqLNGPackage.REFERENCE_COMBINATION__REFS);
     }
     return refs;
   }
@@ -134,7 +134,7 @@ public class ReferenceCombinationImpl extends MinimalEObjectImpl.Container imple
     {
       case ReqLNGPackage.REFERENCE_COMBINATION__REFS:
         getRefs().clear();
-        getRefs().addAll((Collection<? extends Entities>)newValue);
+        getRefs().addAll((Collection<? extends Entity>)newValue);
         return;
       case ReqLNGPackage.REFERENCE_COMBINATION__TEXT:
         getText().clear();

@@ -11,12 +11,12 @@ import de.schneidertim.requirements.nlp.reqLNG.ConceptOrSynonym;
 import de.schneidertim.requirements.nlp.reqLNG.ConditionalRequirement;
 import de.schneidertim.requirements.nlp.reqLNG.Description;
 import de.schneidertim.requirements.nlp.reqLNG.DomainObject;
-import de.schneidertim.requirements.nlp.reqLNG.Entities;
 import de.schneidertim.requirements.nlp.reqLNG.Function;
 import de.schneidertim.requirements.nlp.reqLNG.Glossary;
 import de.schneidertim.requirements.nlp.reqLNG.Precondition;
 import de.schneidertim.requirements.nlp.reqLNG.ReferenceCombination;
 import de.schneidertim.requirements.nlp.reqLNG.ReqLNGPackage;
+import de.schneidertim.requirements.nlp.reqLNG.RequirementDocument;
 import de.schneidertim.requirements.nlp.reqLNG.RequirementEnd;
 import de.schneidertim.requirements.nlp.reqLNG.SentenceWithReferences;
 import de.schneidertim.requirements.nlp.reqLNG.TextWithConceptsOrSynonyms;
@@ -76,9 +76,6 @@ public class ReqLNGSemanticSequencer extends AbstractDelegatingSemanticSequencer
 			case ReqLNGPackage.DOMAIN_OBJECT:
 				sequence_DomainObject(context, (DomainObject) semanticObject); 
 				return; 
-			case ReqLNGPackage.ENTITIES:
-				sequence_Entities(context, (Entities) semanticObject); 
-				return; 
 			case ReqLNGPackage.FUNCTION:
 				sequence_Function(context, (Function) semanticObject); 
 				return; 
@@ -90,6 +87,9 @@ public class ReqLNGSemanticSequencer extends AbstractDelegatingSemanticSequencer
 				return; 
 			case ReqLNGPackage.REFERENCE_COMBINATION:
 				sequence_ReferenceCombination(context, (ReferenceCombination) semanticObject); 
+				return; 
+			case ReqLNGPackage.REQUIREMENT_DOCUMENT:
+				sequence_RequirementDocument(context, (RequirementDocument) semanticObject); 
 				return; 
 			case ReqLNGPackage.REQUIREMENT_END:
 				sequence_RequirementEnd(context, (RequirementEnd) semanticObject); 
@@ -136,6 +136,7 @@ public class ReqLNGSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Contexts:
+	 *     Entity returns Actor
 	 *     Actor returns Actor
 	 *
 	 * Constraint:
@@ -143,10 +144,10 @@ public class ReqLNGSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 */
 	protected void sequence_Actor(ISerializationContext context, Actor semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, ReqLNGPackage.Literals.ACTOR__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ReqLNGPackage.Literals.ACTOR__NAME));
-			if (transientValues.isValueTransient(semanticObject, ReqLNGPackage.Literals.ACTOR__DESCRIPTION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ReqLNGPackage.Literals.ACTOR__DESCRIPTION));
+			if (transientValues.isValueTransient(semanticObject, ReqLNGPackage.Literals.ENTITY__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ReqLNGPackage.Literals.ENTITY__NAME));
+			if (transientValues.isValueTransient(semanticObject, ReqLNGPackage.Literals.ENTITY__DESCRIPTION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ReqLNGPackage.Literals.ENTITY__DESCRIPTION));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getActorAccess().getNameTextParserRuleCall_2_0(), semanticObject.getName());
@@ -225,18 +226,6 @@ public class ReqLNGSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Contexts:
-	 *     Entities returns Entities
-	 *
-	 * Constraint:
-	 *     ((actor+=Actor | system+=System | requirement+=Requirement)* glossary=Glossary)
-	 */
-	protected void sequence_Entities(ISerializationContext context, Entities semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
 	 *     FunctionSynonym returns ConceptOrSynonym
 	 *
 	 * Constraint:
@@ -304,9 +293,21 @@ public class ReqLNGSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     ReferenceCombination returns ReferenceCombination
 	 *
 	 * Constraint:
-	 *     (refs+=[Entities|STRING]+ text+=Text)
+	 *     (refs+=[Entity|STRING]+ text+=Text)
 	 */
 	protected void sequence_ReferenceCombination(ISerializationContext context, ReferenceCombination semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     RequirementDocument returns RequirementDocument
+	 *
+	 * Constraint:
+	 *     ((entities+=Entity | requirement+=Requirement)* glossary=Glossary)
+	 */
+	protected void sequence_RequirementDocument(ISerializationContext context, RequirementDocument semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -337,6 +338,7 @@ public class ReqLNGSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Contexts:
+	 *     Entity returns System
 	 *     System returns System
 	 *
 	 * Constraint:
@@ -344,10 +346,10 @@ public class ReqLNGSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 */
 	protected void sequence_System(ISerializationContext context, de.schneidertim.requirements.nlp.reqLNG.System semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, ReqLNGPackage.Literals.SYSTEM__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ReqLNGPackage.Literals.SYSTEM__NAME));
-			if (transientValues.isValueTransient(semanticObject, ReqLNGPackage.Literals.SYSTEM__DESCRIPTION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ReqLNGPackage.Literals.SYSTEM__DESCRIPTION));
+			if (transientValues.isValueTransient(semanticObject, ReqLNGPackage.Literals.ENTITY__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ReqLNGPackage.Literals.ENTITY__NAME));
+			if (transientValues.isValueTransient(semanticObject, ReqLNGPackage.Literals.ENTITY__DESCRIPTION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ReqLNGPackage.Literals.ENTITY__DESCRIPTION));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getSystemAccess().getNameTextParserRuleCall_2_0(), semanticObject.getName());
@@ -376,7 +378,7 @@ public class ReqLNGSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     TextWithReferences returns TextWithReferences
 	 *
 	 * Constraint:
-	 *     (onlyRefs+=[Entities|STRING]+ | (refBefore+=[Entities|STRING]* text+=Text after+=ReferenceCombination* finalRef+=[Entities|STRING]*))
+	 *     (onlyRefs+=[Entity|STRING]+ | (refBefore+=[Entity|STRING]* text+=Text after+=ReferenceCombination* finalRef+=[Entity|STRING]*))
 	 */
 	protected void sequence_TextWithReferences(ISerializationContext context, TextWithReferences semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

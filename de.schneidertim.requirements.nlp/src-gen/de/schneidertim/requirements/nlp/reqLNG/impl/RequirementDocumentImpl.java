@@ -3,11 +3,11 @@
  */
 package de.schneidertim.requirements.nlp.reqLNG.impl;
 
-import de.schneidertim.requirements.nlp.reqLNG.Actor;
-import de.schneidertim.requirements.nlp.reqLNG.Entities;
+import de.schneidertim.requirements.nlp.reqLNG.Entity;
 import de.schneidertim.requirements.nlp.reqLNG.Glossary;
 import de.schneidertim.requirements.nlp.reqLNG.ReqLNGPackage;
 import de.schneidertim.requirements.nlp.reqLNG.Requirement;
+import de.schneidertim.requirements.nlp.reqLNG.RequirementDocument;
 
 import java.util.Collection;
 
@@ -27,41 +27,30 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Entities</b></em>'.
+ * An implementation of the model object '<em><b>Requirement Document</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.schneidertim.requirements.nlp.reqLNG.impl.EntitiesImpl#getActor <em>Actor</em>}</li>
- *   <li>{@link de.schneidertim.requirements.nlp.reqLNG.impl.EntitiesImpl#getSystem <em>System</em>}</li>
- *   <li>{@link de.schneidertim.requirements.nlp.reqLNG.impl.EntitiesImpl#getRequirement <em>Requirement</em>}</li>
- *   <li>{@link de.schneidertim.requirements.nlp.reqLNG.impl.EntitiesImpl#getGlossary <em>Glossary</em>}</li>
+ *   <li>{@link de.schneidertim.requirements.nlp.reqLNG.impl.RequirementDocumentImpl#getEntities <em>Entities</em>}</li>
+ *   <li>{@link de.schneidertim.requirements.nlp.reqLNG.impl.RequirementDocumentImpl#getRequirement <em>Requirement</em>}</li>
+ *   <li>{@link de.schneidertim.requirements.nlp.reqLNG.impl.RequirementDocumentImpl#getGlossary <em>Glossary</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class EntitiesImpl extends MinimalEObjectImpl.Container implements Entities
+public class RequirementDocumentImpl extends MinimalEObjectImpl.Container implements RequirementDocument
 {
   /**
-   * The cached value of the '{@link #getActor() <em>Actor</em>}' containment reference list.
+   * The cached value of the '{@link #getEntities() <em>Entities</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getActor()
+   * @see #getEntities()
    * @generated
    * @ordered
    */
-  protected EList<Actor> actor;
-
-  /**
-   * The cached value of the '{@link #getSystem() <em>System</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getSystem()
-   * @generated
-   * @ordered
-   */
-  protected EList<de.schneidertim.requirements.nlp.reqLNG.System> system;
+  protected EList<Entity> entities;
 
   /**
    * The cached value of the '{@link #getRequirement() <em>Requirement</em>}' containment reference list.
@@ -88,7 +77,7 @@ public class EntitiesImpl extends MinimalEObjectImpl.Container implements Entiti
    * <!-- end-user-doc -->
    * @generated
    */
-  protected EntitiesImpl()
+  protected RequirementDocumentImpl()
   {
     super();
   }
@@ -101,7 +90,7 @@ public class EntitiesImpl extends MinimalEObjectImpl.Container implements Entiti
   @Override
   protected EClass eStaticClass()
   {
-    return ReqLNGPackage.Literals.ENTITIES;
+    return ReqLNGPackage.Literals.REQUIREMENT_DOCUMENT;
   }
 
   /**
@@ -109,27 +98,13 @@ public class EntitiesImpl extends MinimalEObjectImpl.Container implements Entiti
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Actor> getActor()
+  public EList<Entity> getEntities()
   {
-    if (actor == null)
+    if (entities == null)
     {
-      actor = new EObjectContainmentEList<Actor>(Actor.class, this, ReqLNGPackage.ENTITIES__ACTOR);
+      entities = new EObjectContainmentEList<Entity>(Entity.class, this, ReqLNGPackage.REQUIREMENT_DOCUMENT__ENTITIES);
     }
-    return actor;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<de.schneidertim.requirements.nlp.reqLNG.System> getSystem()
-  {
-    if (system == null)
-    {
-      system = new EObjectContainmentEList<de.schneidertim.requirements.nlp.reqLNG.System>(de.schneidertim.requirements.nlp.reqLNG.System.class, this, ReqLNGPackage.ENTITIES__SYSTEM);
-    }
-    return system;
+    return entities;
   }
 
   /**
@@ -141,7 +116,7 @@ public class EntitiesImpl extends MinimalEObjectImpl.Container implements Entiti
   {
     if (requirement == null)
     {
-      requirement = new EObjectContainmentEList<Requirement>(Requirement.class, this, ReqLNGPackage.ENTITIES__REQUIREMENT);
+      requirement = new EObjectContainmentEList<Requirement>(Requirement.class, this, ReqLNGPackage.REQUIREMENT_DOCUMENT__REQUIREMENT);
     }
     return requirement;
   }
@@ -167,7 +142,7 @@ public class EntitiesImpl extends MinimalEObjectImpl.Container implements Entiti
     glossary = newGlossary;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ReqLNGPackage.ENTITIES__GLOSSARY, oldGlossary, newGlossary);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ReqLNGPackage.REQUIREMENT_DOCUMENT__GLOSSARY, oldGlossary, newGlossary);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -184,14 +159,14 @@ public class EntitiesImpl extends MinimalEObjectImpl.Container implements Entiti
     {
       NotificationChain msgs = null;
       if (glossary != null)
-        msgs = ((InternalEObject)glossary).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ReqLNGPackage.ENTITIES__GLOSSARY, null, msgs);
+        msgs = ((InternalEObject)glossary).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ReqLNGPackage.REQUIREMENT_DOCUMENT__GLOSSARY, null, msgs);
       if (newGlossary != null)
-        msgs = ((InternalEObject)newGlossary).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ReqLNGPackage.ENTITIES__GLOSSARY, null, msgs);
+        msgs = ((InternalEObject)newGlossary).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ReqLNGPackage.REQUIREMENT_DOCUMENT__GLOSSARY, null, msgs);
       msgs = basicSetGlossary(newGlossary, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ReqLNGPackage.ENTITIES__GLOSSARY, newGlossary, newGlossary));
+      eNotify(new ENotificationImpl(this, Notification.SET, ReqLNGPackage.REQUIREMENT_DOCUMENT__GLOSSARY, newGlossary, newGlossary));
   }
 
   /**
@@ -204,13 +179,11 @@ public class EntitiesImpl extends MinimalEObjectImpl.Container implements Entiti
   {
     switch (featureID)
     {
-      case ReqLNGPackage.ENTITIES__ACTOR:
-        return ((InternalEList<?>)getActor()).basicRemove(otherEnd, msgs);
-      case ReqLNGPackage.ENTITIES__SYSTEM:
-        return ((InternalEList<?>)getSystem()).basicRemove(otherEnd, msgs);
-      case ReqLNGPackage.ENTITIES__REQUIREMENT:
+      case ReqLNGPackage.REQUIREMENT_DOCUMENT__ENTITIES:
+        return ((InternalEList<?>)getEntities()).basicRemove(otherEnd, msgs);
+      case ReqLNGPackage.REQUIREMENT_DOCUMENT__REQUIREMENT:
         return ((InternalEList<?>)getRequirement()).basicRemove(otherEnd, msgs);
-      case ReqLNGPackage.ENTITIES__GLOSSARY:
+      case ReqLNGPackage.REQUIREMENT_DOCUMENT__GLOSSARY:
         return basicSetGlossary(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -226,13 +199,11 @@ public class EntitiesImpl extends MinimalEObjectImpl.Container implements Entiti
   {
     switch (featureID)
     {
-      case ReqLNGPackage.ENTITIES__ACTOR:
-        return getActor();
-      case ReqLNGPackage.ENTITIES__SYSTEM:
-        return getSystem();
-      case ReqLNGPackage.ENTITIES__REQUIREMENT:
+      case ReqLNGPackage.REQUIREMENT_DOCUMENT__ENTITIES:
+        return getEntities();
+      case ReqLNGPackage.REQUIREMENT_DOCUMENT__REQUIREMENT:
         return getRequirement();
-      case ReqLNGPackage.ENTITIES__GLOSSARY:
+      case ReqLNGPackage.REQUIREMENT_DOCUMENT__GLOSSARY:
         return getGlossary();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -249,19 +220,15 @@ public class EntitiesImpl extends MinimalEObjectImpl.Container implements Entiti
   {
     switch (featureID)
     {
-      case ReqLNGPackage.ENTITIES__ACTOR:
-        getActor().clear();
-        getActor().addAll((Collection<? extends Actor>)newValue);
+      case ReqLNGPackage.REQUIREMENT_DOCUMENT__ENTITIES:
+        getEntities().clear();
+        getEntities().addAll((Collection<? extends Entity>)newValue);
         return;
-      case ReqLNGPackage.ENTITIES__SYSTEM:
-        getSystem().clear();
-        getSystem().addAll((Collection<? extends de.schneidertim.requirements.nlp.reqLNG.System>)newValue);
-        return;
-      case ReqLNGPackage.ENTITIES__REQUIREMENT:
+      case ReqLNGPackage.REQUIREMENT_DOCUMENT__REQUIREMENT:
         getRequirement().clear();
         getRequirement().addAll((Collection<? extends Requirement>)newValue);
         return;
-      case ReqLNGPackage.ENTITIES__GLOSSARY:
+      case ReqLNGPackage.REQUIREMENT_DOCUMENT__GLOSSARY:
         setGlossary((Glossary)newValue);
         return;
     }
@@ -278,16 +245,13 @@ public class EntitiesImpl extends MinimalEObjectImpl.Container implements Entiti
   {
     switch (featureID)
     {
-      case ReqLNGPackage.ENTITIES__ACTOR:
-        getActor().clear();
+      case ReqLNGPackage.REQUIREMENT_DOCUMENT__ENTITIES:
+        getEntities().clear();
         return;
-      case ReqLNGPackage.ENTITIES__SYSTEM:
-        getSystem().clear();
-        return;
-      case ReqLNGPackage.ENTITIES__REQUIREMENT:
+      case ReqLNGPackage.REQUIREMENT_DOCUMENT__REQUIREMENT:
         getRequirement().clear();
         return;
-      case ReqLNGPackage.ENTITIES__GLOSSARY:
+      case ReqLNGPackage.REQUIREMENT_DOCUMENT__GLOSSARY:
         setGlossary((Glossary)null);
         return;
     }
@@ -304,16 +268,14 @@ public class EntitiesImpl extends MinimalEObjectImpl.Container implements Entiti
   {
     switch (featureID)
     {
-      case ReqLNGPackage.ENTITIES__ACTOR:
-        return actor != null && !actor.isEmpty();
-      case ReqLNGPackage.ENTITIES__SYSTEM:
-        return system != null && !system.isEmpty();
-      case ReqLNGPackage.ENTITIES__REQUIREMENT:
+      case ReqLNGPackage.REQUIREMENT_DOCUMENT__ENTITIES:
+        return entities != null && !entities.isEmpty();
+      case ReqLNGPackage.REQUIREMENT_DOCUMENT__REQUIREMENT:
         return requirement != null && !requirement.isEmpty();
-      case ReqLNGPackage.ENTITIES__GLOSSARY:
+      case ReqLNGPackage.REQUIREMENT_DOCUMENT__GLOSSARY:
         return glossary != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //EntitiesImpl
+} //RequirementDocumentImpl

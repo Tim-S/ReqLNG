@@ -2,26 +2,21 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="reqLNG" nsURI="http://www.schneidertim.de/requirements/nlp/ReqLNG"
     nsPrefix="reqLNG">
-  <eClassifiers xsi:type="ecore:EClass" name="Entities">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="actor" upperBound="-1"
-        eType="#//Actor" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="system" upperBound="-1"
-        eType="#//System" containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RequirementDocument">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entities" upperBound="-1"
+        eType="#//Entity" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="requirement" upperBound="-1"
         eType="#//Requirement" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="glossary" eType="#//Glossary"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Actor">
+  <eClassifiers xsi:type="ecore:EClass" name="Entity">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="description" eType="#//Description"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="System">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="description" eType="#//Description"
-        containment="true"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Actor" eSuperTypes="#//Entity"/>
+  <eClassifiers xsi:type="ecore:EClass" name="System" eSuperTypes="#//Entity"/>
   <eClassifiers xsi:type="ecore:EClass" name="Description">
     <eStructuralFeatures xsi:type="ecore:EReference" name="text" upperBound="-1" eType="#//SentenceWithReferences"
         containment="true"/>
@@ -33,19 +28,19 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TextWithReferences">
     <eStructuralFeatures xsi:type="ecore:EReference" name="onlyRefs" unique="false"
-        upperBound="-1" eType="#//Entities"/>
+        upperBound="-1" eType="#//Entity"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="refBefore" unique="false"
-        upperBound="-1" eType="#//Entities"/>
+        upperBound="-1" eType="#//Entity"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="after" upperBound="-1"
         eType="#//ReferenceCombination" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="finalRef" unique="false"
-        upperBound="-1" eType="#//Entities"/>
+        upperBound="-1" eType="#//Entity"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ReferenceCombination">
     <eStructuralFeatures xsi:type="ecore:EReference" name="refs" unique="false" upperBound="-1"
-        eType="#//Entities"/>
+        eType="#//Entity"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>

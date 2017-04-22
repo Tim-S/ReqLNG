@@ -10,13 +10,14 @@ import de.schneidertim.requirements.nlp.reqLNG.ConceptOrSynonym;
 import de.schneidertim.requirements.nlp.reqLNG.ConditionalRequirement;
 import de.schneidertim.requirements.nlp.reqLNG.Description;
 import de.schneidertim.requirements.nlp.reqLNG.DomainObject;
-import de.schneidertim.requirements.nlp.reqLNG.Entities;
+import de.schneidertim.requirements.nlp.reqLNG.Entity;
 import de.schneidertim.requirements.nlp.reqLNG.Function;
 import de.schneidertim.requirements.nlp.reqLNG.Glossary;
 import de.schneidertim.requirements.nlp.reqLNG.Precondition;
 import de.schneidertim.requirements.nlp.reqLNG.ReferenceCombination;
 import de.schneidertim.requirements.nlp.reqLNG.ReqLNGPackage;
 import de.schneidertim.requirements.nlp.reqLNG.Requirement;
+import de.schneidertim.requirements.nlp.reqLNG.RequirementDocument;
 import de.schneidertim.requirements.nlp.reqLNG.RequirementEnd;
 import de.schneidertim.requirements.nlp.reqLNG.SentenceWithReferences;
 import de.schneidertim.requirements.nlp.reqLNG.TextWithConceptsOrSynonyms;
@@ -91,10 +92,17 @@ public class ReqLNGSwitch<T> extends Switch<T>
   {
     switch (classifierID)
     {
-      case ReqLNGPackage.ENTITIES:
+      case ReqLNGPackage.REQUIREMENT_DOCUMENT:
       {
-        Entities entities = (Entities)theEObject;
-        T result = caseEntities(entities);
+        RequirementDocument requirementDocument = (RequirementDocument)theEObject;
+        T result = caseRequirementDocument(requirementDocument);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ReqLNGPackage.ENTITY:
+      {
+        Entity entity = (Entity)theEObject;
+        T result = caseEntity(entity);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -102,6 +110,7 @@ public class ReqLNGSwitch<T> extends Switch<T>
       {
         Actor actor = (Actor)theEObject;
         T result = caseActor(actor);
+        if (result == null) result = caseEntity(actor);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -109,6 +118,7 @@ public class ReqLNGSwitch<T> extends Switch<T>
       {
         de.schneidertim.requirements.nlp.reqLNG.System system = (de.schneidertim.requirements.nlp.reqLNG.System)theEObject;
         T result = caseSystem(system);
+        if (result == null) result = caseEntity(system);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -233,17 +243,33 @@ public class ReqLNGSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Entities</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Requirement Document</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Entities</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Requirement Document</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseEntities(Entities object)
+  public T caseRequirementDocument(RequirementDocument object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Entity</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Entity</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseEntity(Entity object)
   {
     return null;
   }

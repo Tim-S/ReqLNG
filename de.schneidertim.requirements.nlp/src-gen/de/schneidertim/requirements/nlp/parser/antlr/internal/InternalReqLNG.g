@@ -44,7 +44,7 @@ import de.schneidertim.requirements.nlp.services.ReqLNGGrammarAccess;
 
     @Override
     protected String getFirstRuleName() {
-    	return "Entities";
+    	return "RequirementDocument";
    	}
 
    	@Override
@@ -61,15 +61,15 @@ import de.schneidertim.requirements.nlp.services.ReqLNGGrammarAccess;
     }
 }
 
-// Entry rule entryRuleEntities
-entryRuleEntities returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getEntitiesRule()); }
-	iv_ruleEntities=ruleEntities
-	{ $current=$iv_ruleEntities.current; }
+// Entry rule entryRuleRequirementDocument
+entryRuleRequirementDocument returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getRequirementDocumentRule()); }
+	iv_ruleRequirementDocument=ruleRequirementDocument
+	{ $current=$iv_ruleRequirementDocument.current; }
 	EOF;
 
-// Rule Entities
-ruleEntities returns [EObject current=null]
+// Rule RequirementDocument
+ruleRequirementDocument returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -81,18 +81,18 @@ ruleEntities returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getEntitiesAccess().getActorActorParserRuleCall_0_0_0());
+						newCompositeNode(grammarAccess.getRequirementDocumentAccess().getEntitiesEntityParserRuleCall_0_0_0());
 					}
-					lv_actor_0_0=ruleActor
+					lv_entities_0_0=ruleEntity
 					{
 						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getEntitiesRule());
+							$current = createModelElementForParent(grammarAccess.getRequirementDocumentRule());
 						}
 						add(
 							$current,
-							"actor",
-							lv_actor_0_0,
-							"de.schneidertim.requirements.nlp.ReqLNG.Actor");
+							"entities",
+							lv_entities_0_0,
+							"de.schneidertim.requirements.nlp.ReqLNG.Entity");
 						afterParserOrEnumRuleCall();
 					}
 				)
@@ -101,37 +101,17 @@ ruleEntities returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getEntitiesAccess().getSystemSystemParserRuleCall_0_1_0());
+						newCompositeNode(grammarAccess.getRequirementDocumentAccess().getRequirementRequirementParserRuleCall_0_1_0());
 					}
-					lv_system_1_0=ruleSystem
+					lv_requirement_1_0=ruleRequirement
 					{
 						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getEntitiesRule());
-						}
-						add(
-							$current,
-							"system",
-							lv_system_1_0,
-							"de.schneidertim.requirements.nlp.ReqLNG.System");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-			    |
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getEntitiesAccess().getRequirementRequirementParserRuleCall_0_2_0());
-					}
-					lv_requirement_2_0=ruleRequirement
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getEntitiesRule());
+							$current = createModelElementForParent(grammarAccess.getRequirementDocumentRule());
 						}
 						add(
 							$current,
 							"requirement",
-							lv_requirement_2_0,
+							lv_requirement_1_0,
 							"de.schneidertim.requirements.nlp.ReqLNG.Requirement");
 						afterParserOrEnumRuleCall();
 					}
@@ -141,22 +121,58 @@ ruleEntities returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getEntitiesAccess().getGlossaryGlossaryParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getRequirementDocumentAccess().getGlossaryGlossaryParserRuleCall_1_0());
 				}
-				lv_glossary_3_0=ruleGlossary
+				lv_glossary_2_0=ruleGlossary
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getEntitiesRule());
+						$current = createModelElementForParent(grammarAccess.getRequirementDocumentRule());
 					}
 					set(
 						$current,
 						"glossary",
-						lv_glossary_3_0,
+						lv_glossary_2_0,
 						"de.schneidertim.requirements.nlp.ReqLNG.Glossary");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
+	)
+;
+
+// Entry rule entryRuleEntity
+entryRuleEntity returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getEntityRule()); }
+	iv_ruleEntity=ruleEntity
+	{ $current=$iv_ruleEntity.current; }
+	EOF;
+
+// Rule Entity
+ruleEntity returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		{
+			newCompositeNode(grammarAccess.getEntityAccess().getActorParserRuleCall_0());
+		}
+		this_Actor_0=ruleActor
+		{
+			$current = $this_Actor_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getEntityAccess().getSystemParserRuleCall_1());
+		}
+		this_System_1=ruleSystem
+		{
+			$current = $this_System_1.current;
+			afterParserOrEnumRuleCall();
+		}
 	)
 ;
 
@@ -507,7 +523,7 @@ ruleTextWithReferences returns [EObject current=null]
 				}
 				otherlv_0=RULE_STRING
 				{
-					newLeafNode(otherlv_0, grammarAccess.getTextWithReferencesAccess().getOnlyRefsEntitiesCrossReference_0_0());
+					newLeafNode(otherlv_0, grammarAccess.getTextWithReferencesAccess().getOnlyRefsEntityCrossReference_0_0());
 				}
 			)
 		)+
@@ -522,7 +538,7 @@ ruleTextWithReferences returns [EObject current=null]
 					}
 					otherlv_1=RULE_STRING
 					{
-						newLeafNode(otherlv_1, grammarAccess.getTextWithReferencesAccess().getRefBeforeEntitiesCrossReference_1_0_0());
+						newLeafNode(otherlv_1, grammarAccess.getTextWithReferencesAccess().getRefBeforeEntityCrossReference_1_0_0());
 					}
 				)
 			)*
@@ -573,7 +589,7 @@ ruleTextWithReferences returns [EObject current=null]
 					}
 					otherlv_4=RULE_STRING
 					{
-						newLeafNode(otherlv_4, grammarAccess.getTextWithReferencesAccess().getFinalRefEntitiesCrossReference_1_3_0());
+						newLeafNode(otherlv_4, grammarAccess.getTextWithReferencesAccess().getFinalRefEntityCrossReference_1_3_0());
 					}
 				)
 			)*
@@ -606,7 +622,7 @@ ruleReferenceCombination returns [EObject current=null]
 				}
 				otherlv_0=RULE_STRING
 				{
-					newLeafNode(otherlv_0, grammarAccess.getReferenceCombinationAccess().getRefsEntitiesCrossReference_0_0());
+					newLeafNode(otherlv_0, grammarAccess.getReferenceCombinationAccess().getRefsEntityCrossReference_0_0());
 				}
 			)
 		)+

@@ -10,7 +10,7 @@ import de.schneidertim.requirements.nlp.reqLNG.ConceptOrSynonym;
 import de.schneidertim.requirements.nlp.reqLNG.ConditionalRequirement;
 import de.schneidertim.requirements.nlp.reqLNG.Description;
 import de.schneidertim.requirements.nlp.reqLNG.DomainObject;
-import de.schneidertim.requirements.nlp.reqLNG.Entities;
+import de.schneidertim.requirements.nlp.reqLNG.Entity;
 import de.schneidertim.requirements.nlp.reqLNG.Function;
 import de.schneidertim.requirements.nlp.reqLNG.Glossary;
 import de.schneidertim.requirements.nlp.reqLNG.Liability;
@@ -19,6 +19,7 @@ import de.schneidertim.requirements.nlp.reqLNG.ReferenceCombination;
 import de.schneidertim.requirements.nlp.reqLNG.ReqLNGFactory;
 import de.schneidertim.requirements.nlp.reqLNG.ReqLNGPackage;
 import de.schneidertim.requirements.nlp.reqLNG.Requirement;
+import de.schneidertim.requirements.nlp.reqLNG.RequirementDocument;
 import de.schneidertim.requirements.nlp.reqLNG.RequirementEnd;
 import de.schneidertim.requirements.nlp.reqLNG.SentenceWithReferences;
 import de.schneidertim.requirements.nlp.reqLNG.TextWithConceptsOrSynonyms;
@@ -86,7 +87,8 @@ public class ReqLNGFactoryImpl extends EFactoryImpl implements ReqLNGFactory
   {
     switch (eClass.getClassifierID())
     {
-      case ReqLNGPackage.ENTITIES: return createEntities();
+      case ReqLNGPackage.REQUIREMENT_DOCUMENT: return createRequirementDocument();
+      case ReqLNGPackage.ENTITY: return createEntity();
       case ReqLNGPackage.ACTOR: return createActor();
       case ReqLNGPackage.SYSTEM: return createSystem();
       case ReqLNGPackage.DESCRIPTION: return createDescription();
@@ -149,10 +151,21 @@ public class ReqLNGFactoryImpl extends EFactoryImpl implements ReqLNGFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Entities createEntities()
+  public RequirementDocument createRequirementDocument()
   {
-    EntitiesImpl entities = new EntitiesImpl();
-    return entities;
+    RequirementDocumentImpl requirementDocument = new RequirementDocumentImpl();
+    return requirementDocument;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Entity createEntity()
+  {
+    EntityImpl entity = new EntityImpl();
+    return entity;
   }
 
   /**

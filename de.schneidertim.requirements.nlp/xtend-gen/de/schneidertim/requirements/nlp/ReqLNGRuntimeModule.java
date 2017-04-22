@@ -3,6 +3,11 @@
  */
 package de.schneidertim.requirements.nlp;
 
+import com.google.inject.Binder;
+import com.google.inject.binder.AnnotatedBindingBuilder;
+import com.google.inject.binder.ScopedBindingBuilder;
+import de.hsrm.cknauf.POSRegex.api.IPOSRegexPattern;
+import de.hsrm.cknauf.POSRegex.impl.POSRegexPattern;
 import de.schneidertim.requirements.nlp.AbstractReqLNGRuntimeModule;
 
 /**
@@ -10,4 +15,11 @@ import de.schneidertim.requirements.nlp.AbstractReqLNGRuntimeModule;
  */
 @SuppressWarnings("all")
 public class ReqLNGRuntimeModule extends AbstractReqLNGRuntimeModule {
+  @Override
+  public void configure(final Binder binder) {
+    super.configure(binder);
+    AnnotatedBindingBuilder<IPOSRegexPattern> _bind = binder.<IPOSRegexPattern>bind(IPOSRegexPattern.class);
+    ScopedBindingBuilder _to = _bind.to(POSRegexPattern.class);
+    _to.asEagerSingleton();
+  }
 }

@@ -31,7 +31,7 @@ public interface TextWithReferences extends EObject
 {
   /**
    * Returns the value of the '<em><b>Only Refs</b></em>' reference list.
-   * The list contents are of type {@link de.schneidertim.requirements.nlp.reqLNG.Entities}.
+   * The list contents are of type {@link de.schneidertim.requirements.nlp.reqLNG.Entity}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Only Refs</em>' reference list isn't clear,
@@ -43,11 +43,11 @@ public interface TextWithReferences extends EObject
    * @model
    * @generated
    */
-  EList<Entities> getOnlyRefs();
+  EList<Entity> getOnlyRefs();
 
   /**
    * Returns the value of the '<em><b>Ref Before</b></em>' reference list.
-   * The list contents are of type {@link de.schneidertim.requirements.nlp.reqLNG.Entities}.
+   * The list contents are of type {@link de.schneidertim.requirements.nlp.reqLNG.Entity}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Ref Before</em>' reference list isn't clear,
@@ -59,7 +59,7 @@ public interface TextWithReferences extends EObject
    * @model
    * @generated
    */
-  EList<Entities> getRefBefore();
+  EList<Entity> getRefBefore();
 
   /**
    * Returns the value of the '<em><b>Text</b></em>' attribute list.
@@ -95,7 +95,7 @@ public interface TextWithReferences extends EObject
 
   /**
    * Returns the value of the '<em><b>Final Ref</b></em>' reference list.
-   * The list contents are of type {@link de.schneidertim.requirements.nlp.reqLNG.Entities}.
+   * The list contents are of type {@link de.schneidertim.requirements.nlp.reqLNG.Entity}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Final Ref</em>' reference list isn't clear,
@@ -107,6 +107,6 @@ public interface TextWithReferences extends EObject
    * @model
    * @generated
    */
-  EList<Entities> getFinalRef();
+  EList<Entity> getFinalRef();
 
 } // TextWithReferences

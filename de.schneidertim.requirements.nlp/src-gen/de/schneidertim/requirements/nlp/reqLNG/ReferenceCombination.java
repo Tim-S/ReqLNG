@@ -28,7 +28,7 @@ public interface ReferenceCombination extends EObject
 {
   /**
    * Returns the value of the '<em><b>Refs</b></em>' reference list.
-   * The list contents are of type {@link de.schneidertim.requirements.nlp.reqLNG.Entities}.
+   * The list contents are of type {@link de.schneidertim.requirements.nlp.reqLNG.Entity}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Refs</em>' reference list isn't clear,
@@ -40,7 +40,7 @@ public interface ReferenceCombination extends EObject
    * @model
    * @generated
    */
-  EList<Entities> getRefs();
+  EList<Entity> getRefs();
 
   /**
    * Returns the value of the '<em><b>Text</b></em>' attribute list.

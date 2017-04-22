@@ -3,7 +3,7 @@
  */
 package de.schneidertim.requirements.nlp.reqLNG.impl;
 
-import de.schneidertim.requirements.nlp.reqLNG.Entities;
+import de.schneidertim.requirements.nlp.reqLNG.Entity;
 import de.schneidertim.requirements.nlp.reqLNG.ReferenceCombination;
 import de.schneidertim.requirements.nlp.reqLNG.ReqLNGPackage;
 import de.schneidertim.requirements.nlp.reqLNG.TextWithReferences;
@@ -51,7 +51,7 @@ public class TextWithReferencesImpl extends MinimalEObjectImpl.Container impleme
    * @generated
    * @ordered
    */
-  protected EList<Entities> onlyRefs;
+  protected EList<Entity> onlyRefs;
 
   /**
    * The cached value of the '{@link #getRefBefore() <em>Ref Before</em>}' reference list.
@@ -61,7 +61,7 @@ public class TextWithReferencesImpl extends MinimalEObjectImpl.Container impleme
    * @generated
    * @ordered
    */
-  protected EList<Entities> refBefore;
+  protected EList<Entity> refBefore;
 
   /**
    * The cached value of the '{@link #getText() <em>Text</em>}' attribute list.
@@ -91,7 +91,7 @@ public class TextWithReferencesImpl extends MinimalEObjectImpl.Container impleme
    * @generated
    * @ordered
    */
-  protected EList<Entities> finalRef;
+  protected EList<Entity> finalRef;
 
   /**
    * <!-- begin-user-doc -->
@@ -119,11 +119,11 @@ public class TextWithReferencesImpl extends MinimalEObjectImpl.Container impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Entities> getOnlyRefs()
+  public EList<Entity> getOnlyRefs()
   {
     if (onlyRefs == null)
     {
-      onlyRefs = new EObjectResolvingEList<Entities>(Entities.class, this, ReqLNGPackage.TEXT_WITH_REFERENCES__ONLY_REFS);
+      onlyRefs = new EObjectResolvingEList<Entity>(Entity.class, this, ReqLNGPackage.TEXT_WITH_REFERENCES__ONLY_REFS);
     }
     return onlyRefs;
   }
@@ -133,11 +133,11 @@ public class TextWithReferencesImpl extends MinimalEObjectImpl.Container impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Entities> getRefBefore()
+  public EList<Entity> getRefBefore()
   {
     if (refBefore == null)
     {
-      refBefore = new EObjectResolvingEList<Entities>(Entities.class, this, ReqLNGPackage.TEXT_WITH_REFERENCES__REF_BEFORE);
+      refBefore = new EObjectResolvingEList<Entity>(Entity.class, this, ReqLNGPackage.TEXT_WITH_REFERENCES__REF_BEFORE);
     }
     return refBefore;
   }
@@ -175,11 +175,11 @@ public class TextWithReferencesImpl extends MinimalEObjectImpl.Container impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Entities> getFinalRef()
+  public EList<Entity> getFinalRef()
   {
     if (finalRef == null)
     {
-      finalRef = new EObjectResolvingEList<Entities>(Entities.class, this, ReqLNGPackage.TEXT_WITH_REFERENCES__FINAL_REF);
+      finalRef = new EObjectResolvingEList<Entity>(Entity.class, this, ReqLNGPackage.TEXT_WITH_REFERENCES__FINAL_REF);
     }
     return finalRef;
   }
@@ -237,11 +237,11 @@ public class TextWithReferencesImpl extends MinimalEObjectImpl.Container impleme
     {
       case ReqLNGPackage.TEXT_WITH_REFERENCES__ONLY_REFS:
         getOnlyRefs().clear();
-        getOnlyRefs().addAll((Collection<? extends Entities>)newValue);
+        getOnlyRefs().addAll((Collection<? extends Entity>)newValue);
         return;
       case ReqLNGPackage.TEXT_WITH_REFERENCES__REF_BEFORE:
         getRefBefore().clear();
-        getRefBefore().addAll((Collection<? extends Entities>)newValue);
+        getRefBefore().addAll((Collection<? extends Entity>)newValue);
         return;
       case ReqLNGPackage.TEXT_WITH_REFERENCES__TEXT:
         getText().clear();
@@ -253,7 +253,7 @@ public class TextWithReferencesImpl extends MinimalEObjectImpl.Container impleme
         return;
       case ReqLNGPackage.TEXT_WITH_REFERENCES__FINAL_REF:
         getFinalRef().clear();
-        getFinalRef().addAll((Collection<? extends Entities>)newValue);
+        getFinalRef().addAll((Collection<? extends Entity>)newValue);
         return;
     }
     super.eSet(featureID, newValue);

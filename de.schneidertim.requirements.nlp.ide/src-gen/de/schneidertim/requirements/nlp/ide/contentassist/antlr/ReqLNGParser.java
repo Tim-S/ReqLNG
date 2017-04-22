@@ -35,7 +35,8 @@ public class ReqLNGParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
-					put(grammarAccess.getEntitiesAccess().getAlternatives_0(), "rule__Entities__Alternatives_0");
+					put(grammarAccess.getRequirementDocumentAccess().getAlternatives_0(), "rule__RequirementDocument__Alternatives_0");
+					put(grammarAccess.getEntityAccess().getAlternatives(), "rule__Entity__Alternatives");
 					put(grammarAccess.getTextAccess().getAlternatives(), "rule__Text__Alternatives");
 					put(grammarAccess.getSentenceWithReferencesAccess().getPunctuationAlternatives_1_0(), "rule__SentenceWithReferences__PunctuationAlternatives_1_0");
 					put(grammarAccess.getTextWithReferencesAccess().getAlternatives(), "rule__TextWithReferences__Alternatives");
@@ -43,7 +44,7 @@ public class ReqLNGParser extends AbstractContentAssistParser {
 					put(grammarAccess.getTextWithConceptsOrSynonymsAccess().getAlternatives(), "rule__TextWithConceptsOrSynonyms__Alternatives");
 					put(grammarAccess.getConceptAccess().getAlternatives(), "rule__Concept__Alternatives");
 					put(grammarAccess.getLiabilityAccess().getAlternatives(), "rule__Liability__Alternatives");
-					put(grammarAccess.getEntitiesAccess().getGroup(), "rule__Entities__Group__0");
+					put(grammarAccess.getRequirementDocumentAccess().getGroup(), "rule__RequirementDocument__Group__0");
 					put(grammarAccess.getActorAccess().getGroup(), "rule__Actor__Group__0");
 					put(grammarAccess.getSystemAccess().getGroup(), "rule__System__Group__0");
 					put(grammarAccess.getDescriptionAccess().getGroup(), "rule__Description__Group__0");
@@ -66,10 +67,9 @@ public class ReqLNGParser extends AbstractContentAssistParser {
 					put(grammarAccess.getDomainObjectAccess().getGroup_3(), "rule__DomainObject__Group_3__0");
 					put(grammarAccess.getDomainObjectAccess().getGroup_3_3(), "rule__DomainObject__Group_3_3__0");
 					put(grammarAccess.getDomainObjectAccess().getGroup_4(), "rule__DomainObject__Group_4__0");
-					put(grammarAccess.getEntitiesAccess().getActorAssignment_0_0(), "rule__Entities__ActorAssignment_0_0");
-					put(grammarAccess.getEntitiesAccess().getSystemAssignment_0_1(), "rule__Entities__SystemAssignment_0_1");
-					put(grammarAccess.getEntitiesAccess().getRequirementAssignment_0_2(), "rule__Entities__RequirementAssignment_0_2");
-					put(grammarAccess.getEntitiesAccess().getGlossaryAssignment_1(), "rule__Entities__GlossaryAssignment_1");
+					put(grammarAccess.getRequirementDocumentAccess().getEntitiesAssignment_0_0(), "rule__RequirementDocument__EntitiesAssignment_0_0");
+					put(grammarAccess.getRequirementDocumentAccess().getRequirementAssignment_0_1(), "rule__RequirementDocument__RequirementAssignment_0_1");
+					put(grammarAccess.getRequirementDocumentAccess().getGlossaryAssignment_1(), "rule__RequirementDocument__GlossaryAssignment_1");
 					put(grammarAccess.getActorAccess().getNameAssignment_2(), "rule__Actor__NameAssignment_2");
 					put(grammarAccess.getActorAccess().getDescriptionAssignment_3(), "rule__Actor__DescriptionAssignment_3");
 					put(grammarAccess.getSystemAccess().getNameAssignment_2(), "rule__System__NameAssignment_2");
@@ -131,7 +131,7 @@ public class ReqLNGParser extends AbstractContentAssistParser {
 	protected Collection<FollowElement> getFollowElements(AbstractInternalContentAssistParser parser) {
 		try {
 			InternalReqLNGParser typedParser = (InternalReqLNGParser) parser;
-			typedParser.entryRuleEntities();
+			typedParser.entryRuleRequirementDocument();
 			return typedParser.getFollowElements();
 		} catch(RecognitionException ex) {
 			throw new RuntimeException(ex);

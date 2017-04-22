@@ -3,10 +3,14 @@ grammar de.schneidertim.requirements.nlp.ReqLNG with org.eclipse.xtext.common.Te
 generate reqLNG "http://www.schneidertim.de/requirements/nlp/ReqLNG"
 
 // Initial Rule:
-Entities:
-	(actor+=Actor | system+=System | requirement+=Requirement)* glossary=Glossary
+RequirementDocument:
+	(entities+= Entity | requirement+=Requirement)* glossary=Glossary
 ;
 // For defining Actors and Systems 
+Entity:
+	Actor | System
+;
+
 Actor: 
 'Actor' ':' name=Text description = Description;
 
@@ -25,10 +29,10 @@ SentenceWithReferences:
 ;
 
 TextWithReferences:
-   (onlyRefs+=[Entities|STRING]+ | 
-   refBefore+=[Entities|STRING]* text+=Text after+=ReferenceCombination* finalRef+=[Entities|STRING]*);
+   (onlyRefs+=[Entity|STRING]+ | 
+   refBefore+=[Entity|STRING]* text+=Text after+=ReferenceCombination* finalRef+=[Entity|STRING]*);
 
-ReferenceCombination: (refs+=[Entities|STRING]+ text+=Text);
+ReferenceCombination: (refs+=[Entity|STRING]+ text+=Text);
 
 // For defining Requirements 
 // Use your defined boilerplate here:

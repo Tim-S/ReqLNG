@@ -59,32 +59,23 @@ public interface ReqLNGPackage extends EPackage
   ReqLNGPackage eINSTANCE = de.schneidertim.requirements.nlp.reqLNG.impl.ReqLNGPackageImpl.init();
 
   /**
-   * The meta object id for the '{@link de.schneidertim.requirements.nlp.reqLNG.impl.EntitiesImpl <em>Entities</em>}' class.
+   * The meta object id for the '{@link de.schneidertim.requirements.nlp.reqLNG.impl.RequirementDocumentImpl <em>Requirement Document</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.schneidertim.requirements.nlp.reqLNG.impl.EntitiesImpl
-   * @see de.schneidertim.requirements.nlp.reqLNG.impl.ReqLNGPackageImpl#getEntities()
+   * @see de.schneidertim.requirements.nlp.reqLNG.impl.RequirementDocumentImpl
+   * @see de.schneidertim.requirements.nlp.reqLNG.impl.ReqLNGPackageImpl#getRequirementDocument()
    * @generated
    */
-  int ENTITIES = 0;
+  int REQUIREMENT_DOCUMENT = 0;
 
   /**
-   * The feature id for the '<em><b>Actor</b></em>' containment reference list.
+   * The feature id for the '<em><b>Entities</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ENTITIES__ACTOR = 0;
-
-  /**
-   * The feature id for the '<em><b>System</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ENTITIES__SYSTEM = 1;
+  int REQUIREMENT_DOCUMENT__ENTITIES = 0;
 
   /**
    * The feature id for the '<em><b>Requirement</b></em>' containment reference list.
@@ -93,7 +84,7 @@ public interface ReqLNGPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENTITIES__REQUIREMENT = 2;
+  int REQUIREMENT_DOCUMENT__REQUIREMENT = 1;
 
   /**
    * The feature id for the '<em><b>Glossary</b></em>' containment reference.
@@ -102,16 +93,53 @@ public interface ReqLNGPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENTITIES__GLOSSARY = 3;
+  int REQUIREMENT_DOCUMENT__GLOSSARY = 2;
 
   /**
-   * The number of structural features of the '<em>Entities</em>' class.
+   * The number of structural features of the '<em>Requirement Document</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ENTITIES_FEATURE_COUNT = 4;
+  int REQUIREMENT_DOCUMENT_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link de.schneidertim.requirements.nlp.reqLNG.impl.EntityImpl <em>Entity</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.schneidertim.requirements.nlp.reqLNG.impl.EntityImpl
+   * @see de.schneidertim.requirements.nlp.reqLNG.impl.ReqLNGPackageImpl#getEntity()
+   * @generated
+   */
+  int ENTITY = 1;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTITY__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Description</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTITY__DESCRIPTION = 1;
+
+  /**
+   * The number of structural features of the '<em>Entity</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTITY_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link de.schneidertim.requirements.nlp.reqLNG.impl.ActorImpl <em>Actor</em>}' class.
@@ -121,7 +149,7 @@ public interface ReqLNGPackage extends EPackage
    * @see de.schneidertim.requirements.nlp.reqLNG.impl.ReqLNGPackageImpl#getActor()
    * @generated
    */
-  int ACTOR = 1;
+  int ACTOR = 2;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -130,7 +158,7 @@ public interface ReqLNGPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ACTOR__NAME = 0;
+  int ACTOR__NAME = ENTITY__NAME;
 
   /**
    * The feature id for the '<em><b>Description</b></em>' containment reference.
@@ -139,7 +167,7 @@ public interface ReqLNGPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ACTOR__DESCRIPTION = 1;
+  int ACTOR__DESCRIPTION = ENTITY__DESCRIPTION;
 
   /**
    * The number of structural features of the '<em>Actor</em>' class.
@@ -148,7 +176,7 @@ public interface ReqLNGPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ACTOR_FEATURE_COUNT = 2;
+  int ACTOR_FEATURE_COUNT = ENTITY_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link de.schneidertim.requirements.nlp.reqLNG.impl.SystemImpl <em>System</em>}' class.
@@ -158,7 +186,7 @@ public interface ReqLNGPackage extends EPackage
    * @see de.schneidertim.requirements.nlp.reqLNG.impl.ReqLNGPackageImpl#getSystem()
    * @generated
    */
-  int SYSTEM = 2;
+  int SYSTEM = 3;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -167,7 +195,7 @@ public interface ReqLNGPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SYSTEM__NAME = 0;
+  int SYSTEM__NAME = ENTITY__NAME;
 
   /**
    * The feature id for the '<em><b>Description</b></em>' containment reference.
@@ -176,7 +204,7 @@ public interface ReqLNGPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SYSTEM__DESCRIPTION = 1;
+  int SYSTEM__DESCRIPTION = ENTITY__DESCRIPTION;
 
   /**
    * The number of structural features of the '<em>System</em>' class.
@@ -185,7 +213,7 @@ public interface ReqLNGPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SYSTEM_FEATURE_COUNT = 2;
+  int SYSTEM_FEATURE_COUNT = ENTITY_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link de.schneidertim.requirements.nlp.reqLNG.impl.DescriptionImpl <em>Description</em>}' class.
@@ -195,7 +223,7 @@ public interface ReqLNGPackage extends EPackage
    * @see de.schneidertim.requirements.nlp.reqLNG.impl.ReqLNGPackageImpl#getDescription()
    * @generated
    */
-  int DESCRIPTION = 3;
+  int DESCRIPTION = 4;
 
   /**
    * The feature id for the '<em><b>Text</b></em>' containment reference list.
@@ -223,7 +251,7 @@ public interface ReqLNGPackage extends EPackage
    * @see de.schneidertim.requirements.nlp.reqLNG.impl.ReqLNGPackageImpl#getSentenceWithReferences()
    * @generated
    */
-  int SENTENCE_WITH_REFERENCES = 4;
+  int SENTENCE_WITH_REFERENCES = 5;
 
   /**
    * The feature id for the '<em><b>Text With References</b></em>' containment reference.
@@ -260,7 +288,7 @@ public interface ReqLNGPackage extends EPackage
    * @see de.schneidertim.requirements.nlp.reqLNG.impl.ReqLNGPackageImpl#getTextWithReferences()
    * @generated
    */
-  int TEXT_WITH_REFERENCES = 5;
+  int TEXT_WITH_REFERENCES = 6;
 
   /**
    * The feature id for the '<em><b>Only Refs</b></em>' reference list.
@@ -324,7 +352,7 @@ public interface ReqLNGPackage extends EPackage
    * @see de.schneidertim.requirements.nlp.reqLNG.impl.ReqLNGPackageImpl#getReferenceCombination()
    * @generated
    */
-  int REFERENCE_COMBINATION = 6;
+  int REFERENCE_COMBINATION = 7;
 
   /**
    * The feature id for the '<em><b>Refs</b></em>' reference list.
@@ -361,7 +389,7 @@ public interface ReqLNGPackage extends EPackage
    * @see de.schneidertim.requirements.nlp.reqLNG.impl.ReqLNGPackageImpl#getRequirement()
    * @generated
    */
-  int REQUIREMENT = 7;
+  int REQUIREMENT = 8;
 
   /**
    * The feature id for the '<em><b>System</b></em>' reference.
@@ -407,7 +435,7 @@ public interface ReqLNGPackage extends EPackage
    * @see de.schneidertim.requirements.nlp.reqLNG.impl.ReqLNGPackageImpl#getConditionalRequirement()
    * @generated
    */
-  int CONDITIONAL_REQUIREMENT = 8;
+  int CONDITIONAL_REQUIREMENT = 9;
 
   /**
    * The feature id for the '<em><b>System</b></em>' reference.
@@ -462,7 +490,7 @@ public interface ReqLNGPackage extends EPackage
    * @see de.schneidertim.requirements.nlp.reqLNG.impl.ReqLNGPackageImpl#getUnconditionalRequirement()
    * @generated
    */
-  int UNCONDITIONAL_REQUIREMENT = 9;
+  int UNCONDITIONAL_REQUIREMENT = 10;
 
   /**
    * The feature id for the '<em><b>System</b></em>' reference.
@@ -517,7 +545,7 @@ public interface ReqLNGPackage extends EPackage
    * @see de.schneidertim.requirements.nlp.reqLNG.impl.ReqLNGPackageImpl#getPrecondition()
    * @generated
    */
-  int PRECONDITION = 10;
+  int PRECONDITION = 11;
 
   /**
    * The feature id for the '<em><b>Conditional</b></em>' attribute.
@@ -554,7 +582,7 @@ public interface ReqLNGPackage extends EPackage
    * @see de.schneidertim.requirements.nlp.reqLNG.impl.ReqLNGPackageImpl#getActorInteraction()
    * @generated
    */
-  int ACTOR_INTERACTION = 11;
+  int ACTOR_INTERACTION = 12;
 
   /**
    * The feature id for the '<em><b>Provide</b></em>' attribute.
@@ -636,7 +664,7 @@ public interface ReqLNGPackage extends EPackage
    * @see de.schneidertim.requirements.nlp.reqLNG.impl.ReqLNGPackageImpl#getRequirementEnd()
    * @generated
    */
-  int REQUIREMENT_END = 12;
+  int REQUIREMENT_END = 13;
 
   /**
    * The feature id for the '<em><b>Ai</b></em>' containment reference.
@@ -673,7 +701,7 @@ public interface ReqLNGPackage extends EPackage
    * @see de.schneidertim.requirements.nlp.reqLNG.impl.ReqLNGPackageImpl#getTextWithConceptsOrSynonyms()
    * @generated
    */
-  int TEXT_WITH_CONCEPTS_OR_SYNONYMS = 13;
+  int TEXT_WITH_CONCEPTS_OR_SYNONYMS = 14;
 
   /**
    * The feature id for the '<em><b>Only Refs</b></em>' reference list.
@@ -737,7 +765,7 @@ public interface ReqLNGPackage extends EPackage
    * @see de.schneidertim.requirements.nlp.reqLNG.impl.ReqLNGPackageImpl#getConceptCombination()
    * @generated
    */
-  int CONCEPT_COMBINATION = 14;
+  int CONCEPT_COMBINATION = 15;
 
   /**
    * The feature id for the '<em><b>Concepts</b></em>' reference list.
@@ -774,7 +802,7 @@ public interface ReqLNGPackage extends EPackage
    * @see de.schneidertim.requirements.nlp.reqLNG.impl.ReqLNGPackageImpl#getGlossary()
    * @generated
    */
-  int GLOSSARY = 15;
+  int GLOSSARY = 16;
 
   /**
    * The feature id for the '<em><b>Concepts</b></em>' containment reference list.
@@ -802,7 +830,7 @@ public interface ReqLNGPackage extends EPackage
    * @see de.schneidertim.requirements.nlp.reqLNG.impl.ReqLNGPackageImpl#getConceptOrSynonym()
    * @generated
    */
-  int CONCEPT_OR_SYNONYM = 16;
+  int CONCEPT_OR_SYNONYM = 17;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -848,7 +876,7 @@ public interface ReqLNGPackage extends EPackage
    * @see de.schneidertim.requirements.nlp.reqLNG.impl.ReqLNGPackageImpl#getFunction()
    * @generated
    */
-  int FUNCTION = 17;
+  int FUNCTION = 18;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -894,7 +922,7 @@ public interface ReqLNGPackage extends EPackage
    * @see de.schneidertim.requirements.nlp.reqLNG.impl.ReqLNGPackageImpl#getDomainObject()
    * @generated
    */
-  int DOMAIN_OBJECT = 18;
+  int DOMAIN_OBJECT = 19;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -940,62 +968,83 @@ public interface ReqLNGPackage extends EPackage
    * @see de.schneidertim.requirements.nlp.reqLNG.impl.ReqLNGPackageImpl#getLiability()
    * @generated
    */
-  int LIABILITY = 19;
+  int LIABILITY = 20;
 
 
   /**
-   * Returns the meta object for class '{@link de.schneidertim.requirements.nlp.reqLNG.Entities <em>Entities</em>}'.
+   * Returns the meta object for class '{@link de.schneidertim.requirements.nlp.reqLNG.RequirementDocument <em>Requirement Document</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Entities</em>'.
-   * @see de.schneidertim.requirements.nlp.reqLNG.Entities
+   * @return the meta object for class '<em>Requirement Document</em>'.
+   * @see de.schneidertim.requirements.nlp.reqLNG.RequirementDocument
    * @generated
    */
-  EClass getEntities();
+  EClass getRequirementDocument();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.schneidertim.requirements.nlp.reqLNG.Entities#getActor <em>Actor</em>}'.
+   * Returns the meta object for the containment reference list '{@link de.schneidertim.requirements.nlp.reqLNG.RequirementDocument#getEntities <em>Entities</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Actor</em>'.
-   * @see de.schneidertim.requirements.nlp.reqLNG.Entities#getActor()
-   * @see #getEntities()
+   * @return the meta object for the containment reference list '<em>Entities</em>'.
+   * @see de.schneidertim.requirements.nlp.reqLNG.RequirementDocument#getEntities()
+   * @see #getRequirementDocument()
    * @generated
    */
-  EReference getEntities_Actor();
+  EReference getRequirementDocument_Entities();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.schneidertim.requirements.nlp.reqLNG.Entities#getSystem <em>System</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>System</em>'.
-   * @see de.schneidertim.requirements.nlp.reqLNG.Entities#getSystem()
-   * @see #getEntities()
-   * @generated
-   */
-  EReference getEntities_System();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link de.schneidertim.requirements.nlp.reqLNG.Entities#getRequirement <em>Requirement</em>}'.
+   * Returns the meta object for the containment reference list '{@link de.schneidertim.requirements.nlp.reqLNG.RequirementDocument#getRequirement <em>Requirement</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Requirement</em>'.
-   * @see de.schneidertim.requirements.nlp.reqLNG.Entities#getRequirement()
-   * @see #getEntities()
+   * @see de.schneidertim.requirements.nlp.reqLNG.RequirementDocument#getRequirement()
+   * @see #getRequirementDocument()
    * @generated
    */
-  EReference getEntities_Requirement();
+  EReference getRequirementDocument_Requirement();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.schneidertim.requirements.nlp.reqLNG.Entities#getGlossary <em>Glossary</em>}'.
+   * Returns the meta object for the containment reference '{@link de.schneidertim.requirements.nlp.reqLNG.RequirementDocument#getGlossary <em>Glossary</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Glossary</em>'.
-   * @see de.schneidertim.requirements.nlp.reqLNG.Entities#getGlossary()
-   * @see #getEntities()
+   * @see de.schneidertim.requirements.nlp.reqLNG.RequirementDocument#getGlossary()
+   * @see #getRequirementDocument()
    * @generated
    */
-  EReference getEntities_Glossary();
+  EReference getRequirementDocument_Glossary();
+
+  /**
+   * Returns the meta object for class '{@link de.schneidertim.requirements.nlp.reqLNG.Entity <em>Entity</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Entity</em>'.
+   * @see de.schneidertim.requirements.nlp.reqLNG.Entity
+   * @generated
+   */
+  EClass getEntity();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.schneidertim.requirements.nlp.reqLNG.Entity#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see de.schneidertim.requirements.nlp.reqLNG.Entity#getName()
+   * @see #getEntity()
+   * @generated
+   */
+  EAttribute getEntity_Name();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.schneidertim.requirements.nlp.reqLNG.Entity#getDescription <em>Description</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Description</em>'.
+   * @see de.schneidertim.requirements.nlp.reqLNG.Entity#getDescription()
+   * @see #getEntity()
+   * @generated
+   */
+  EReference getEntity_Description();
 
   /**
    * Returns the meta object for class '{@link de.schneidertim.requirements.nlp.reqLNG.Actor <em>Actor</em>}'.
@@ -1008,28 +1057,6 @@ public interface ReqLNGPackage extends EPackage
   EClass getActor();
 
   /**
-   * Returns the meta object for the attribute '{@link de.schneidertim.requirements.nlp.reqLNG.Actor#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.schneidertim.requirements.nlp.reqLNG.Actor#getName()
-   * @see #getActor()
-   * @generated
-   */
-  EAttribute getActor_Name();
-
-  /**
-   * Returns the meta object for the containment reference '{@link de.schneidertim.requirements.nlp.reqLNG.Actor#getDescription <em>Description</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Description</em>'.
-   * @see de.schneidertim.requirements.nlp.reqLNG.Actor#getDescription()
-   * @see #getActor()
-   * @generated
-   */
-  EReference getActor_Description();
-
-  /**
    * Returns the meta object for class '{@link de.schneidertim.requirements.nlp.reqLNG.System <em>System</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1038,28 +1065,6 @@ public interface ReqLNGPackage extends EPackage
    * @generated
    */
   EClass getSystem();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.schneidertim.requirements.nlp.reqLNG.System#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.schneidertim.requirements.nlp.reqLNG.System#getName()
-   * @see #getSystem()
-   * @generated
-   */
-  EAttribute getSystem_Name();
-
-  /**
-   * Returns the meta object for the containment reference '{@link de.schneidertim.requirements.nlp.reqLNG.System#getDescription <em>Description</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Description</em>'.
-   * @see de.schneidertim.requirements.nlp.reqLNG.System#getDescription()
-   * @see #getSystem()
-   * @generated
-   */
-  EReference getSystem_Description();
 
   /**
    * Returns the meta object for class '{@link de.schneidertim.requirements.nlp.reqLNG.Description <em>Description</em>}'.
@@ -1662,30 +1667,22 @@ public interface ReqLNGPackage extends EPackage
   interface Literals
   {
     /**
-     * The meta object literal for the '{@link de.schneidertim.requirements.nlp.reqLNG.impl.EntitiesImpl <em>Entities</em>}' class.
+     * The meta object literal for the '{@link de.schneidertim.requirements.nlp.reqLNG.impl.RequirementDocumentImpl <em>Requirement Document</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.schneidertim.requirements.nlp.reqLNG.impl.EntitiesImpl
-     * @see de.schneidertim.requirements.nlp.reqLNG.impl.ReqLNGPackageImpl#getEntities()
+     * @see de.schneidertim.requirements.nlp.reqLNG.impl.RequirementDocumentImpl
+     * @see de.schneidertim.requirements.nlp.reqLNG.impl.ReqLNGPackageImpl#getRequirementDocument()
      * @generated
      */
-    EClass ENTITIES = eINSTANCE.getEntities();
+    EClass REQUIREMENT_DOCUMENT = eINSTANCE.getRequirementDocument();
 
     /**
-     * The meta object literal for the '<em><b>Actor</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Entities</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ENTITIES__ACTOR = eINSTANCE.getEntities_Actor();
-
-    /**
-     * The meta object literal for the '<em><b>System</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference ENTITIES__SYSTEM = eINSTANCE.getEntities_System();
+    EReference REQUIREMENT_DOCUMENT__ENTITIES = eINSTANCE.getRequirementDocument_Entities();
 
     /**
      * The meta object literal for the '<em><b>Requirement</b></em>' containment reference list feature.
@@ -1693,7 +1690,7 @@ public interface ReqLNGPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ENTITIES__REQUIREMENT = eINSTANCE.getEntities_Requirement();
+    EReference REQUIREMENT_DOCUMENT__REQUIREMENT = eINSTANCE.getRequirementDocument_Requirement();
 
     /**
      * The meta object literal for the '<em><b>Glossary</b></em>' containment reference feature.
@@ -1701,7 +1698,33 @@ public interface ReqLNGPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ENTITIES__GLOSSARY = eINSTANCE.getEntities_Glossary();
+    EReference REQUIREMENT_DOCUMENT__GLOSSARY = eINSTANCE.getRequirementDocument_Glossary();
+
+    /**
+     * The meta object literal for the '{@link de.schneidertim.requirements.nlp.reqLNG.impl.EntityImpl <em>Entity</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.schneidertim.requirements.nlp.reqLNG.impl.EntityImpl
+     * @see de.schneidertim.requirements.nlp.reqLNG.impl.ReqLNGPackageImpl#getEntity()
+     * @generated
+     */
+    EClass ENTITY = eINSTANCE.getEntity();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ENTITY__NAME = eINSTANCE.getEntity_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Description</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ENTITY__DESCRIPTION = eINSTANCE.getEntity_Description();
 
     /**
      * The meta object literal for the '{@link de.schneidertim.requirements.nlp.reqLNG.impl.ActorImpl <em>Actor</em>}' class.
@@ -1714,22 +1737,6 @@ public interface ReqLNGPackage extends EPackage
     EClass ACTOR = eINSTANCE.getActor();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute ACTOR__NAME = eINSTANCE.getActor_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Description</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference ACTOR__DESCRIPTION = eINSTANCE.getActor_Description();
-
-    /**
      * The meta object literal for the '{@link de.schneidertim.requirements.nlp.reqLNG.impl.SystemImpl <em>System</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1738,22 +1745,6 @@ public interface ReqLNGPackage extends EPackage
      * @generated
      */
     EClass SYSTEM = eINSTANCE.getSystem();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute SYSTEM__NAME = eINSTANCE.getSystem_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Description</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference SYSTEM__DESCRIPTION = eINSTANCE.getSystem_Description();
 
     /**
      * The meta object literal for the '{@link de.schneidertim.requirements.nlp.reqLNG.impl.DescriptionImpl <em>Description</em>}' class.
