@@ -22,9 +22,13 @@ class NLPValidator extends AbstractReqLNGValidator {
 	@Check(CheckType.NORMAL)
 	def checkObjectWithDetailsContainsFunction(RequirementEnd end) {
 		val pattern = '(?$verb[pos:VB|pos:VBD|pos:VBG|pos:VBN|pos:VBP|pos:VBZ])'
+		//get Requirement which contains this ReqEnd
 		val requirement = end.eContainer as Requirement
+		//transform Requirement to String
 		val reqString = converter.toString(requirement)
+		//get verbs in Requirement string 
 		val result = posRegex.match(reqString, pattern)
+		//get objectWithDetails part of RequirementEnd and transform it to string
 		val objectWithDetails = end.objectWithDetails
 		val owdString = converter.toString(objectWithDetails)
 		val verbs = result.tokensByGroup.get("verb")
@@ -38,6 +42,8 @@ class NLPValidator extends AbstractReqLNGValidator {
 	def countOccurrences(String string, List<List<Token>> lists) {
 		//println(lists.flatten.map[word])
 		//println(lists.flatten.filter[string.contains(word)])
+		
+		//count how many words of the tokens are contained in the string
 		lists.flatten.filter[string.contains(word)]
 	}
 	
