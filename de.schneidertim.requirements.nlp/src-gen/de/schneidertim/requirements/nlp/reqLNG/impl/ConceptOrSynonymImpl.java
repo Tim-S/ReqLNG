@@ -5,23 +5,13 @@ package de.schneidertim.requirements.nlp.reqLNG.impl;
 
 import de.schneidertim.requirements.nlp.reqLNG.ConceptOrSynonym;
 import de.schneidertim.requirements.nlp.reqLNG.ReqLNGPackage;
-import de.schneidertim.requirements.nlp.reqLNG.SentenceWithReferences;
-
-import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,8 +22,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link de.schneidertim.requirements.nlp.reqLNG.impl.ConceptOrSynonymImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.schneidertim.requirements.nlp.reqLNG.impl.ConceptOrSynonymImpl#getSynonyms <em>Synonyms</em>}</li>
- *   <li>{@link de.schneidertim.requirements.nlp.reqLNG.impl.ConceptOrSynonymImpl#getDescription <em>Description</em>}</li>
  * </ul>
  *
  * @generated
@@ -59,26 +47,6 @@ public class ConceptOrSynonymImpl extends MinimalEObjectImpl.Container implement
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getSynonyms() <em>Synonyms</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getSynonyms()
-   * @generated
-   * @ordered
-   */
-  protected EList<ConceptOrSynonym> synonyms;
-
-  /**
-   * The cached value of the '{@link #getDescription() <em>Description</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getDescription()
-   * @generated
-   * @ordered
-   */
-  protected EList<SentenceWithReferences> description;
 
   /**
    * <!-- begin-user-doc -->
@@ -129,52 +97,6 @@ public class ConceptOrSynonymImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<ConceptOrSynonym> getSynonyms()
-  {
-    if (synonyms == null)
-    {
-      synonyms = new EObjectContainmentEList<ConceptOrSynonym>(ConceptOrSynonym.class, this, ReqLNGPackage.CONCEPT_OR_SYNONYM__SYNONYMS);
-    }
-    return synonyms;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<SentenceWithReferences> getDescription()
-  {
-    if (description == null)
-    {
-      description = new EObjectContainmentEList<SentenceWithReferences>(SentenceWithReferences.class, this, ReqLNGPackage.CONCEPT_OR_SYNONYM__DESCRIPTION);
-    }
-    return description;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case ReqLNGPackage.CONCEPT_OR_SYNONYM__SYNONYMS:
-        return ((InternalEList<?>)getSynonyms()).basicRemove(otherEnd, msgs);
-      case ReqLNGPackage.CONCEPT_OR_SYNONYM__DESCRIPTION:
-        return ((InternalEList<?>)getDescription()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -182,10 +104,6 @@ public class ConceptOrSynonymImpl extends MinimalEObjectImpl.Container implement
     {
       case ReqLNGPackage.CONCEPT_OR_SYNONYM__NAME:
         return getName();
-      case ReqLNGPackage.CONCEPT_OR_SYNONYM__SYNONYMS:
-        return getSynonyms();
-      case ReqLNGPackage.CONCEPT_OR_SYNONYM__DESCRIPTION:
-        return getDescription();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -195,7 +113,6 @@ public class ConceptOrSynonymImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -203,14 +120,6 @@ public class ConceptOrSynonymImpl extends MinimalEObjectImpl.Container implement
     {
       case ReqLNGPackage.CONCEPT_OR_SYNONYM__NAME:
         setName((String)newValue);
-        return;
-      case ReqLNGPackage.CONCEPT_OR_SYNONYM__SYNONYMS:
-        getSynonyms().clear();
-        getSynonyms().addAll((Collection<? extends ConceptOrSynonym>)newValue);
-        return;
-      case ReqLNGPackage.CONCEPT_OR_SYNONYM__DESCRIPTION:
-        getDescription().clear();
-        getDescription().addAll((Collection<? extends SentenceWithReferences>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -229,12 +138,6 @@ public class ConceptOrSynonymImpl extends MinimalEObjectImpl.Container implement
       case ReqLNGPackage.CONCEPT_OR_SYNONYM__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case ReqLNGPackage.CONCEPT_OR_SYNONYM__SYNONYMS:
-        getSynonyms().clear();
-        return;
-      case ReqLNGPackage.CONCEPT_OR_SYNONYM__DESCRIPTION:
-        getDescription().clear();
-        return;
     }
     super.eUnset(featureID);
   }
@@ -251,10 +154,6 @@ public class ConceptOrSynonymImpl extends MinimalEObjectImpl.Container implement
     {
       case ReqLNGPackage.CONCEPT_OR_SYNONYM__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case ReqLNGPackage.CONCEPT_OR_SYNONYM__SYNONYMS:
-        return synonyms != null && !synonyms.isEmpty();
-      case ReqLNGPackage.CONCEPT_OR_SYNONYM__DESCRIPTION:
-        return description != null && !description.isEmpty();
     }
     return super.eIsSet(featureID);
   }

@@ -7,11 +7,12 @@ import com.google.inject.Inject;
 import de.schneidertim.requirements.nlp.reqLNG.Actor;
 import de.schneidertim.requirements.nlp.reqLNG.ActorInteraction;
 import de.schneidertim.requirements.nlp.reqLNG.ConceptCombination;
-import de.schneidertim.requirements.nlp.reqLNG.ConceptOrSynonym;
 import de.schneidertim.requirements.nlp.reqLNG.ConditionalRequirement;
 import de.schneidertim.requirements.nlp.reqLNG.Description;
 import de.schneidertim.requirements.nlp.reqLNG.DomainObject;
+import de.schneidertim.requirements.nlp.reqLNG.DomainObjectSynonym;
 import de.schneidertim.requirements.nlp.reqLNG.Function;
+import de.schneidertim.requirements.nlp.reqLNG.FunctionSynonym;
 import de.schneidertim.requirements.nlp.reqLNG.Glossary;
 import de.schneidertim.requirements.nlp.reqLNG.Precondition;
 import de.schneidertim.requirements.nlp.reqLNG.ReferenceCombination;
@@ -57,16 +58,6 @@ public class ReqLNGSemanticSequencer extends AbstractDelegatingSemanticSequencer
 			case ReqLNGPackage.CONCEPT_COMBINATION:
 				sequence_ConceptCombination(context, (ConceptCombination) semanticObject); 
 				return; 
-			case ReqLNGPackage.CONCEPT_OR_SYNONYM:
-				if (rule == grammarAccess.getDomainObjectSynonymRule()) {
-					sequence_DomainObjectSynonym(context, (ConceptOrSynonym) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getFunctionSynonymRule()) {
-					sequence_FunctionSynonym(context, (ConceptOrSynonym) semanticObject); 
-					return; 
-				}
-				else break;
 			case ReqLNGPackage.CONDITIONAL_REQUIREMENT:
 				sequence_ConditionalRequirement(context, (ConditionalRequirement) semanticObject); 
 				return; 
@@ -76,8 +67,14 @@ public class ReqLNGSemanticSequencer extends AbstractDelegatingSemanticSequencer
 			case ReqLNGPackage.DOMAIN_OBJECT:
 				sequence_DomainObject(context, (DomainObject) semanticObject); 
 				return; 
+			case ReqLNGPackage.DOMAIN_OBJECT_SYNONYM:
+				sequence_DomainObjectSynonym(context, (DomainObjectSynonym) semanticObject); 
+				return; 
 			case ReqLNGPackage.FUNCTION:
 				sequence_Function(context, (Function) semanticObject); 
+				return; 
+			case ReqLNGPackage.FUNCTION_SYNONYM:
+				sequence_FunctionSynonym(context, (FunctionSynonym) semanticObject); 
 				return; 
 			case ReqLNGPackage.GLOSSARY:
 				sequence_Glossary(context, (Glossary) semanticObject); 
@@ -195,12 +192,13 @@ public class ReqLNGSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Contexts:
-	 *     DomainObjectSynonym returns ConceptOrSynonym
+	 *     ConceptOrSynonym returns DomainObjectSynonym
+	 *     DomainObjectSynonym returns DomainObjectSynonym
 	 *
 	 * Constraint:
 	 *     name=Text
 	 */
-	protected void sequence_DomainObjectSynonym(ISerializationContext context, ConceptOrSynonym semanticObject) {
+	protected void sequence_DomainObjectSynonym(ISerializationContext context, DomainObjectSynonym semanticObject) {
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, ReqLNGPackage.Literals.CONCEPT_OR_SYNONYM__NAME) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ReqLNGPackage.Literals.CONCEPT_OR_SYNONYM__NAME));
@@ -226,12 +224,13 @@ public class ReqLNGSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Contexts:
-	 *     FunctionSynonym returns ConceptOrSynonym
+	 *     ConceptOrSynonym returns FunctionSynonym
+	 *     FunctionSynonym returns FunctionSynonym
 	 *
 	 * Constraint:
 	 *     name=Text
 	 */
-	protected void sequence_FunctionSynonym(ISerializationContext context, ConceptOrSynonym semanticObject) {
+	protected void sequence_FunctionSynonym(ISerializationContext context, FunctionSynonym semanticObject) {
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, ReqLNGPackage.Literals.CONCEPT_OR_SYNONYM__NAME) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ReqLNGPackage.Literals.CONCEPT_OR_SYNONYM__NAME));

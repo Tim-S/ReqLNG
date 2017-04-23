@@ -90,10 +90,14 @@ DomainObject:
     //('Properties' ':' properties+=Property (',' properties+=Property)*)?
     ;
 
-FunctionSynonym returns ConceptOrSynonym:
+ConceptOrSynonym:
+	FunctionSynonym | DomainObjectSynonym
+;
+
+FunctionSynonym returns FunctionSynonym:
     name=Text;
 
-DomainObjectSynonym returns ConceptOrSynonym:
+DomainObjectSynonym returns DomainObjectSynonym:
     name=Text;
     
 terminal WORD:

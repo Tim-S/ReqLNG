@@ -941,13 +941,32 @@ public class ReqLNGGrammarAccess extends AbstractGrammarElementFinder {
 		//SentenceWithReferences
 		public RuleCall getDescriptionSentenceWithReferencesParserRuleCall_4_2_0() { return cDescriptionSentenceWithReferencesParserRuleCall_4_2_0; }
 	}
+	public class ConceptOrSynonymElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.schneidertim.requirements.nlp.ReqLNG.ConceptOrSynonym");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cFunctionSynonymParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cDomainObjectSynonymParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//ConceptOrSynonym:
+		//	FunctionSynonym | DomainObjectSynonym;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//FunctionSynonym | DomainObjectSynonym
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//FunctionSynonym
+		public RuleCall getFunctionSynonymParserRuleCall_0() { return cFunctionSynonymParserRuleCall_0; }
+		
+		//DomainObjectSynonym
+		public RuleCall getDomainObjectSynonymParserRuleCall_1() { return cDomainObjectSynonymParserRuleCall_1; }
+	}
 	public class FunctionSynonymElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.schneidertim.requirements.nlp.ReqLNG.FunctionSynonym");
 		private final Assignment cNameAssignment = (Assignment)rule.eContents().get(1);
 		private final RuleCall cNameTextParserRuleCall_0 = (RuleCall)cNameAssignment.eContents().get(0);
 		
-		//FunctionSynonym ConceptOrSynonym:
-		//	name=Text
+		//FunctionSynonym:
+		//	name=Text;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//name=Text
@@ -961,8 +980,8 @@ public class ReqLNGGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment = (Assignment)rule.eContents().get(1);
 		private final RuleCall cNameTextParserRuleCall_0 = (RuleCall)cNameAssignment.eContents().get(0);
 		
-		//DomainObjectSynonym ConceptOrSynonym:
-		//	name=Text
+		//DomainObjectSynonym:
+		//	name=Text;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//name=Text
@@ -1031,6 +1050,7 @@ public class ReqLNGGrammarAccess extends AbstractGrammarElementFinder {
 	private final ConceptElements pConcept;
 	private final FunctionElements pFunction;
 	private final DomainObjectElements pDomainObject;
+	private final ConceptOrSynonymElements pConceptOrSynonym;
 	private final FunctionSynonymElements pFunctionSynonym;
 	private final DomainObjectSynonymElements pDomainObjectSynonym;
 	private final TerminalRule tWORD;
@@ -1067,6 +1087,7 @@ public class ReqLNGGrammarAccess extends AbstractGrammarElementFinder {
 		this.pConcept = new ConceptElements();
 		this.pFunction = new FunctionElements();
 		this.pDomainObject = new DomainObjectElements();
+		this.pConceptOrSynonym = new ConceptOrSynonymElements();
 		this.pFunctionSynonym = new FunctionSynonymElements();
 		this.pDomainObjectSynonym = new DomainObjectSynonymElements();
 		this.tWORD = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "de.schneidertim.requirements.nlp.ReqLNG.WORD");
@@ -1341,8 +1362,18 @@ public class ReqLNGGrammarAccess extends AbstractGrammarElementFinder {
 		return getDomainObjectAccess().getRule();
 	}
 	
-	//FunctionSynonym ConceptOrSynonym:
-	//	name=Text
+	//ConceptOrSynonym:
+	//	FunctionSynonym | DomainObjectSynonym;
+	public ConceptOrSynonymElements getConceptOrSynonymAccess() {
+		return pConceptOrSynonym;
+	}
+	
+	public ParserRule getConceptOrSynonymRule() {
+		return getConceptOrSynonymAccess().getRule();
+	}
+	
+	//FunctionSynonym:
+	//	name=Text;
 	public FunctionSynonymElements getFunctionSynonymAccess() {
 		return pFunctionSynonym;
 	}
@@ -1351,8 +1382,8 @@ public class ReqLNGGrammarAccess extends AbstractGrammarElementFinder {
 		return getFunctionSynonymAccess().getRule();
 	}
 	
-	//DomainObjectSynonym ConceptOrSynonym:
-	//	name=Text
+	//DomainObjectSynonym:
+	//	name=Text;
 	public DomainObjectSynonymElements getDomainObjectSynonymAccess() {
 		return pDomainObjectSynonym;
 	}

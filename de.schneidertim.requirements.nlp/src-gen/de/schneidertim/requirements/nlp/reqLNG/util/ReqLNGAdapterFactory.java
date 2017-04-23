@@ -10,8 +10,10 @@ import de.schneidertim.requirements.nlp.reqLNG.ConceptOrSynonym;
 import de.schneidertim.requirements.nlp.reqLNG.ConditionalRequirement;
 import de.schneidertim.requirements.nlp.reqLNG.Description;
 import de.schneidertim.requirements.nlp.reqLNG.DomainObject;
+import de.schneidertim.requirements.nlp.reqLNG.DomainObjectSynonym;
 import de.schneidertim.requirements.nlp.reqLNG.Entity;
 import de.schneidertim.requirements.nlp.reqLNG.Function;
+import de.schneidertim.requirements.nlp.reqLNG.FunctionSynonym;
 import de.schneidertim.requirements.nlp.reqLNG.Glossary;
 import de.schneidertim.requirements.nlp.reqLNG.Precondition;
 import de.schneidertim.requirements.nlp.reqLNG.ReferenceCombination;
@@ -193,6 +195,16 @@ public class ReqLNGAdapterFactory extends AdapterFactoryImpl
       public Adapter caseDomainObject(DomainObject object)
       {
         return createDomainObjectAdapter();
+      }
+      @Override
+      public Adapter caseFunctionSynonym(FunctionSynonym object)
+      {
+        return createFunctionSynonymAdapter();
+      }
+      @Override
+      public Adapter caseDomainObjectSynonym(DomainObjectSynonym object)
+      {
+        return createDomainObjectSynonymAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -512,6 +524,36 @@ public class ReqLNGAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createDomainObjectAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.schneidertim.requirements.nlp.reqLNG.FunctionSynonym <em>Function Synonym</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.schneidertim.requirements.nlp.reqLNG.FunctionSynonym
+   * @generated
+   */
+  public Adapter createFunctionSynonymAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.schneidertim.requirements.nlp.reqLNG.DomainObjectSynonym <em>Domain Object Synonym</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.schneidertim.requirements.nlp.reqLNG.DomainObjectSynonym
+   * @generated
+   */
+  public Adapter createDomainObjectSynonymAdapter()
   {
     return null;
   }

@@ -10,8 +10,10 @@ import de.schneidertim.requirements.nlp.reqLNG.ConceptOrSynonym;
 import de.schneidertim.requirements.nlp.reqLNG.ConditionalRequirement;
 import de.schneidertim.requirements.nlp.reqLNG.Description;
 import de.schneidertim.requirements.nlp.reqLNG.DomainObject;
+import de.schneidertim.requirements.nlp.reqLNG.DomainObjectSynonym;
 import de.schneidertim.requirements.nlp.reqLNG.Entity;
 import de.schneidertim.requirements.nlp.reqLNG.Function;
+import de.schneidertim.requirements.nlp.reqLNG.FunctionSynonym;
 import de.schneidertim.requirements.nlp.reqLNG.Glossary;
 import de.schneidertim.requirements.nlp.reqLNG.Liability;
 import de.schneidertim.requirements.nlp.reqLNG.Precondition;
@@ -107,6 +109,8 @@ public class ReqLNGFactoryImpl extends EFactoryImpl implements ReqLNGFactory
       case ReqLNGPackage.CONCEPT_OR_SYNONYM: return createConceptOrSynonym();
       case ReqLNGPackage.FUNCTION: return createFunction();
       case ReqLNGPackage.DOMAIN_OBJECT: return createDomainObject();
+      case ReqLNGPackage.FUNCTION_SYNONYM: return createFunctionSynonym();
+      case ReqLNGPackage.DOMAIN_OBJECT_SYNONYM: return createDomainObjectSynonym();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -364,6 +368,28 @@ public class ReqLNGFactoryImpl extends EFactoryImpl implements ReqLNGFactory
   {
     DomainObjectImpl domainObject = new DomainObjectImpl();
     return domainObject;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public FunctionSynonym createFunctionSynonym()
+  {
+    FunctionSynonymImpl functionSynonym = new FunctionSynonymImpl();
+    return functionSynonym;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DomainObjectSynonym createDomainObjectSynonym()
+  {
+    DomainObjectSynonymImpl domainObjectSynonym = new DomainObjectSynonymImpl();
+    return domainObjectSynonym;
   }
 
   /**

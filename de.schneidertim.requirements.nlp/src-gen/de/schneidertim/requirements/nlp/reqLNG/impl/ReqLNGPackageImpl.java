@@ -10,8 +10,10 @@ import de.schneidertim.requirements.nlp.reqLNG.ConceptOrSynonym;
 import de.schneidertim.requirements.nlp.reqLNG.ConditionalRequirement;
 import de.schneidertim.requirements.nlp.reqLNG.Description;
 import de.schneidertim.requirements.nlp.reqLNG.DomainObject;
+import de.schneidertim.requirements.nlp.reqLNG.DomainObjectSynonym;
 import de.schneidertim.requirements.nlp.reqLNG.Entity;
 import de.schneidertim.requirements.nlp.reqLNG.Function;
+import de.schneidertim.requirements.nlp.reqLNG.FunctionSynonym;
 import de.schneidertim.requirements.nlp.reqLNG.Glossary;
 import de.schneidertim.requirements.nlp.reqLNG.Liability;
 import de.schneidertim.requirements.nlp.reqLNG.Precondition;
@@ -181,6 +183,20 @@ public class ReqLNGPackageImpl extends EPackageImpl implements ReqLNGPackage
    * @generated
    */
   private EClass domainObjectEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass functionSynonymEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass domainObjectSynonymEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -837,26 +853,6 @@ public class ReqLNGPackageImpl extends EPackageImpl implements ReqLNGPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getConceptOrSynonym_Synonyms()
-  {
-    return (EReference)conceptOrSynonymEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getConceptOrSynonym_Description()
-  {
-    return (EReference)conceptOrSynonymEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getFunction()
   {
     return functionEClass;
@@ -867,9 +863,69 @@ public class ReqLNGPackageImpl extends EPackageImpl implements ReqLNGPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getFunction_Synonyms()
+  {
+    return (EReference)functionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFunction_Description()
+  {
+    return (EReference)functionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getDomainObject()
   {
     return domainObjectEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getDomainObject_Synonyms()
+  {
+    return (EReference)domainObjectEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getDomainObject_Description()
+  {
+    return (EReference)domainObjectEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getFunctionSynonym()
+  {
+    return functionSynonymEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getDomainObjectSynonym()
+  {
+    return domainObjectSynonymEClass;
   }
 
   /**
@@ -987,12 +1043,18 @@ public class ReqLNGPackageImpl extends EPackageImpl implements ReqLNGPackage
 
     conceptOrSynonymEClass = createEClass(CONCEPT_OR_SYNONYM);
     createEAttribute(conceptOrSynonymEClass, CONCEPT_OR_SYNONYM__NAME);
-    createEReference(conceptOrSynonymEClass, CONCEPT_OR_SYNONYM__SYNONYMS);
-    createEReference(conceptOrSynonymEClass, CONCEPT_OR_SYNONYM__DESCRIPTION);
 
     functionEClass = createEClass(FUNCTION);
+    createEReference(functionEClass, FUNCTION__SYNONYMS);
+    createEReference(functionEClass, FUNCTION__DESCRIPTION);
 
     domainObjectEClass = createEClass(DOMAIN_OBJECT);
+    createEReference(domainObjectEClass, DOMAIN_OBJECT__SYNONYMS);
+    createEReference(domainObjectEClass, DOMAIN_OBJECT__DESCRIPTION);
+
+    functionSynonymEClass = createEClass(FUNCTION_SYNONYM);
+
+    domainObjectSynonymEClass = createEClass(DOMAIN_OBJECT_SYNONYM);
 
     // Create enums
     liabilityEEnum = createEEnum(LIABILITY);
@@ -1033,6 +1095,8 @@ public class ReqLNGPackageImpl extends EPackageImpl implements ReqLNGPackage
     unconditionalRequirementEClass.getESuperTypes().add(this.getRequirement());
     functionEClass.getESuperTypes().add(this.getConceptOrSynonym());
     domainObjectEClass.getESuperTypes().add(this.getConceptOrSynonym());
+    functionSynonymEClass.getESuperTypes().add(this.getConceptOrSynonym());
+    domainObjectSynonymEClass.getESuperTypes().add(this.getConceptOrSynonym());
 
     // Initialize classes and features; add operations and parameters
     initEClass(requirementDocumentEClass, RequirementDocument.class, "RequirementDocument", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1110,12 +1174,18 @@ public class ReqLNGPackageImpl extends EPackageImpl implements ReqLNGPackage
 
     initEClass(conceptOrSynonymEClass, ConceptOrSynonym.class, "ConceptOrSynonym", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getConceptOrSynonym_Name(), ecorePackage.getEString(), "name", null, 0, 1, ConceptOrSynonym.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getConceptOrSynonym_Synonyms(), this.getConceptOrSynonym(), null, "synonyms", null, 0, -1, ConceptOrSynonym.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getConceptOrSynonym_Description(), this.getSentenceWithReferences(), null, "description", null, 0, -1, ConceptOrSynonym.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(functionEClass, Function.class, "Function", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFunction_Synonyms(), this.getFunctionSynonym(), null, "synonyms", null, 0, -1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunction_Description(), this.getSentenceWithReferences(), null, "description", null, 0, -1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(domainObjectEClass, DomainObject.class, "DomainObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getDomainObject_Synonyms(), this.getDomainObjectSynonym(), null, "synonyms", null, 0, -1, DomainObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDomainObject_Description(), this.getSentenceWithReferences(), null, "description", null, 0, -1, DomainObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(functionSynonymEClass, FunctionSynonym.class, "FunctionSynonym", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(domainObjectSynonymEClass, DomainObjectSynonym.class, "DomainObjectSynonym", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     // Initialize enums and add enum literals
     initEEnum(liabilityEEnum, Liability.class, "Liability");

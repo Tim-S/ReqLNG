@@ -43,6 +43,7 @@ public class ReqLNGParser extends AbstractContentAssistParser {
 					put(grammarAccess.getRequirementAccess().getAlternatives(), "rule__Requirement__Alternatives");
 					put(grammarAccess.getTextWithConceptsOrSynonymsAccess().getAlternatives(), "rule__TextWithConceptsOrSynonyms__Alternatives");
 					put(grammarAccess.getConceptAccess().getAlternatives(), "rule__Concept__Alternatives");
+					put(grammarAccess.getConceptOrSynonymAccess().getAlternatives(), "rule__ConceptOrSynonym__Alternatives");
 					put(grammarAccess.getLiabilityAccess().getAlternatives(), "rule__Liability__Alternatives");
 					put(grammarAccess.getRequirementDocumentAccess().getGroup(), "rule__RequirementDocument__Group__0");
 					put(grammarAccess.getActorAccess().getGroup(), "rule__Actor__Group__0");

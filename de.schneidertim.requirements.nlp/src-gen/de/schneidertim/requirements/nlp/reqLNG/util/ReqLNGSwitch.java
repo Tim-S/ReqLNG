@@ -10,8 +10,10 @@ import de.schneidertim.requirements.nlp.reqLNG.ConceptOrSynonym;
 import de.schneidertim.requirements.nlp.reqLNG.ConditionalRequirement;
 import de.schneidertim.requirements.nlp.reqLNG.Description;
 import de.schneidertim.requirements.nlp.reqLNG.DomainObject;
+import de.schneidertim.requirements.nlp.reqLNG.DomainObjectSynonym;
 import de.schneidertim.requirements.nlp.reqLNG.Entity;
 import de.schneidertim.requirements.nlp.reqLNG.Function;
+import de.schneidertim.requirements.nlp.reqLNG.FunctionSynonym;
 import de.schneidertim.requirements.nlp.reqLNG.Glossary;
 import de.schneidertim.requirements.nlp.reqLNG.Precondition;
 import de.schneidertim.requirements.nlp.reqLNG.ReferenceCombination;
@@ -235,6 +237,22 @@ public class ReqLNGSwitch<T> extends Switch<T>
         DomainObject domainObject = (DomainObject)theEObject;
         T result = caseDomainObject(domainObject);
         if (result == null) result = caseConceptOrSynonym(domainObject);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ReqLNGPackage.FUNCTION_SYNONYM:
+      {
+        FunctionSynonym functionSynonym = (FunctionSynonym)theEObject;
+        T result = caseFunctionSynonym(functionSynonym);
+        if (result == null) result = caseConceptOrSynonym(functionSynonym);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ReqLNGPackage.DOMAIN_OBJECT_SYNONYM:
+      {
+        DomainObjectSynonym domainObjectSynonym = (DomainObjectSynonym)theEObject;
+        T result = caseDomainObjectSynonym(domainObjectSynonym);
+        if (result == null) result = caseConceptOrSynonym(domainObjectSynonym);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -558,6 +576,38 @@ public class ReqLNGSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseDomainObject(DomainObject object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Function Synonym</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Function Synonym</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFunctionSynonym(FunctionSynonym object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Domain Object Synonym</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Domain Object Synonym</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDomainObjectSynonym(DomainObjectSynonym object)
   {
     return null;
   }

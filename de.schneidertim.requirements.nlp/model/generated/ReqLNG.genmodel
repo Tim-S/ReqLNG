@@ -84,10 +84,16 @@
     </genClasses>
     <genClasses ecoreClass="ReqLNG.ecore#//ConceptOrSynonym">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ReqLNG.ecore#//ConceptOrSynonym/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ReqLNG.ecore#//ConceptOrSynonym/synonyms"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ReqLNG.ecore#//ConceptOrSynonym/description"/>
     </genClasses>
-    <genClasses ecoreClass="ReqLNG.ecore#//Function"/>
-    <genClasses ecoreClass="ReqLNG.ecore#//DomainObject"/>
+    <genClasses ecoreClass="ReqLNG.ecore#//Function">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ReqLNG.ecore#//Function/synonyms"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ReqLNG.ecore#//Function/description"/>
+    </genClasses>
+    <genClasses ecoreClass="ReqLNG.ecore#//DomainObject">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ReqLNG.ecore#//DomainObject/synonyms"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ReqLNG.ecore#//DomainObject/description"/>
+    </genClasses>
+    <genClasses ecoreClass="ReqLNG.ecore#//FunctionSynonym"/>
+    <genClasses ecoreClass="ReqLNG.ecore#//DomainObjectSynonym"/>
   </genPackages>
 </genmodel:GenModel>

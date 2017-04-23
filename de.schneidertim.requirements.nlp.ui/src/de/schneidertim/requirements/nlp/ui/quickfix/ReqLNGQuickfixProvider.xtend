@@ -4,10 +4,19 @@
 package de.schneidertim.requirements.nlp.ui.quickfix
 
 import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider
+import de.schneidertim.requirements.nlp.validation.NLPValidator
+import org.eclipse.xtext.ui.editor.quickfix.Fix
+import org.eclipse.xtext.validation.Issue
+import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor
+import de.schneidertim.requirements.nlp.reqLNG.RequirementDocument
+import de.schneidertim.requirements.nlp.reqLNG.Function
+import java.util.List
+import org.eclipse.ui.PlatformUI
+import de.schneidertim.requirements.nlp.reqLNG.ReqLNGFactory
 
 /**
  * Custom quickfixes.
- *
+ * 
  * See https://www.eclipse.org/Xtext/documentation/310_eclipse_support.html#quick-fixes
  */
 class ReqLNGQuickfixProvider extends DefaultQuickfixProvider {
@@ -20,5 +29,42 @@ class ReqLNGQuickfixProvider extends DefaultQuickfixProvider {
 //			val firstLetter = xtextDocument.get(issue.offset, 1)
 //			xtextDocument.replace(issue.offset, 1, firstLetter.toUpperCase)
 //		]
+//	}
+
+//	@Fix(NLPValidator::CHOOSE_FUNCTION_AND_ADD_AS_SYNONYM)
+//	def chooseFunctionAndAddAsSynonym(Issue issue, IssueResolutionAcceptor acceptor) {
+//		acceptor.accept(issue, 'Choose Function and add as synonym', 'Choose Function and add as synonym', 'choose.png') [ context |
+//			val verb = issue.data.head
+//			val modified = context.xtextDocument.modify(
+//            [ resource |
+//				val model = resource.contents.filter(typeof(RequirementDocument)).head
+//				val functions = model.glossary.concepts.filter(typeof(Function)).toList
+//				val functionNames = functions.map[name].toList
+//				val dialog = showSelectionDialog(functionNames, DIALOG_TITLE.replace(":CONCEPT", "Functions"))
+//				if (dialog.result == null) {
+//					return false
+//				}
+//				val chosenFunctionName = dialog.result.head as String
+//				val chosenFunction = functions.filter(a|a.name.equals(chosenFunctionName)).head
+//				val synonym = ReqLNGFactory.eINSTANCE.createFunctionSynonym
+//				synonym.name = verb
+//				chosenFunction.synonyms.add(synonym)
+//			])
+//			if (modified) {
+//				val reference = "\"" + verb + "\""
+//				val text = context.xtextDocument.get(issue.offset, issue.length)
+//				val positionInText = text.indexOf(verb)
+//				context.xtextDocument.replace(issue.offset + positionInText, verb.length, reference)
+//			}
+//		]
+//	}
+//
+//	def showSelectionDialog(List<String> elements, String title) {
+//		val shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+//		val dialog = new ConceptSelectionDialog(shell, elements);
+//		dialog.setInitialPattern("?*")
+//		dialog.setTitle(title)
+//		dialog.open
+//		return dialog
 //	}
 }

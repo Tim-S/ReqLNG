@@ -842,31 +842,13 @@ public interface ReqLNGPackage extends EPackage
   int CONCEPT_OR_SYNONYM__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Synonyms</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONCEPT_OR_SYNONYM__SYNONYMS = 1;
-
-  /**
-   * The feature id for the '<em><b>Description</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONCEPT_OR_SYNONYM__DESCRIPTION = 2;
-
-  /**
    * The number of structural features of the '<em>Concept Or Synonym</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONCEPT_OR_SYNONYM_FEATURE_COUNT = 3;
+  int CONCEPT_OR_SYNONYM_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link de.schneidertim.requirements.nlp.reqLNG.impl.FunctionImpl <em>Function</em>}' class.
@@ -894,7 +876,7 @@ public interface ReqLNGPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNCTION__SYNONYMS = CONCEPT_OR_SYNONYM__SYNONYMS;
+  int FUNCTION__SYNONYMS = CONCEPT_OR_SYNONYM_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Description</b></em>' containment reference list.
@@ -903,7 +885,7 @@ public interface ReqLNGPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNCTION__DESCRIPTION = CONCEPT_OR_SYNONYM__DESCRIPTION;
+  int FUNCTION__DESCRIPTION = CONCEPT_OR_SYNONYM_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Function</em>' class.
@@ -912,7 +894,7 @@ public interface ReqLNGPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNCTION_FEATURE_COUNT = CONCEPT_OR_SYNONYM_FEATURE_COUNT + 0;
+  int FUNCTION_FEATURE_COUNT = CONCEPT_OR_SYNONYM_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link de.schneidertim.requirements.nlp.reqLNG.impl.DomainObjectImpl <em>Domain Object</em>}' class.
@@ -940,7 +922,7 @@ public interface ReqLNGPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DOMAIN_OBJECT__SYNONYMS = CONCEPT_OR_SYNONYM__SYNONYMS;
+  int DOMAIN_OBJECT__SYNONYMS = CONCEPT_OR_SYNONYM_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Description</b></em>' containment reference list.
@@ -949,7 +931,7 @@ public interface ReqLNGPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DOMAIN_OBJECT__DESCRIPTION = CONCEPT_OR_SYNONYM__DESCRIPTION;
+  int DOMAIN_OBJECT__DESCRIPTION = CONCEPT_OR_SYNONYM_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Domain Object</em>' class.
@@ -958,7 +940,63 @@ public interface ReqLNGPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DOMAIN_OBJECT_FEATURE_COUNT = CONCEPT_OR_SYNONYM_FEATURE_COUNT + 0;
+  int DOMAIN_OBJECT_FEATURE_COUNT = CONCEPT_OR_SYNONYM_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link de.schneidertim.requirements.nlp.reqLNG.impl.FunctionSynonymImpl <em>Function Synonym</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.schneidertim.requirements.nlp.reqLNG.impl.FunctionSynonymImpl
+   * @see de.schneidertim.requirements.nlp.reqLNG.impl.ReqLNGPackageImpl#getFunctionSynonym()
+   * @generated
+   */
+  int FUNCTION_SYNONYM = 20;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION_SYNONYM__NAME = CONCEPT_OR_SYNONYM__NAME;
+
+  /**
+   * The number of structural features of the '<em>Function Synonym</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION_SYNONYM_FEATURE_COUNT = CONCEPT_OR_SYNONYM_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link de.schneidertim.requirements.nlp.reqLNG.impl.DomainObjectSynonymImpl <em>Domain Object Synonym</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.schneidertim.requirements.nlp.reqLNG.impl.DomainObjectSynonymImpl
+   * @see de.schneidertim.requirements.nlp.reqLNG.impl.ReqLNGPackageImpl#getDomainObjectSynonym()
+   * @generated
+   */
+  int DOMAIN_OBJECT_SYNONYM = 21;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DOMAIN_OBJECT_SYNONYM__NAME = CONCEPT_OR_SYNONYM__NAME;
+
+  /**
+   * The number of structural features of the '<em>Domain Object Synonym</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DOMAIN_OBJECT_SYNONYM_FEATURE_COUNT = CONCEPT_OR_SYNONYM_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link de.schneidertim.requirements.nlp.reqLNG.Liability <em>Liability</em>}' enum.
@@ -968,7 +1006,7 @@ public interface ReqLNGPackage extends EPackage
    * @see de.schneidertim.requirements.nlp.reqLNG.impl.ReqLNGPackageImpl#getLiability()
    * @generated
    */
-  int LIABILITY = 20;
+  int LIABILITY = 22;
 
 
   /**
@@ -1592,28 +1630,6 @@ public interface ReqLNGPackage extends EPackage
   EAttribute getConceptOrSynonym_Name();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.schneidertim.requirements.nlp.reqLNG.ConceptOrSynonym#getSynonyms <em>Synonyms</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Synonyms</em>'.
-   * @see de.schneidertim.requirements.nlp.reqLNG.ConceptOrSynonym#getSynonyms()
-   * @see #getConceptOrSynonym()
-   * @generated
-   */
-  EReference getConceptOrSynonym_Synonyms();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link de.schneidertim.requirements.nlp.reqLNG.ConceptOrSynonym#getDescription <em>Description</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Description</em>'.
-   * @see de.schneidertim.requirements.nlp.reqLNG.ConceptOrSynonym#getDescription()
-   * @see #getConceptOrSynonym()
-   * @generated
-   */
-  EReference getConceptOrSynonym_Description();
-
-  /**
    * Returns the meta object for class '{@link de.schneidertim.requirements.nlp.reqLNG.Function <em>Function</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1624,6 +1640,28 @@ public interface ReqLNGPackage extends EPackage
   EClass getFunction();
 
   /**
+   * Returns the meta object for the containment reference list '{@link de.schneidertim.requirements.nlp.reqLNG.Function#getSynonyms <em>Synonyms</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Synonyms</em>'.
+   * @see de.schneidertim.requirements.nlp.reqLNG.Function#getSynonyms()
+   * @see #getFunction()
+   * @generated
+   */
+  EReference getFunction_Synonyms();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link de.schneidertim.requirements.nlp.reqLNG.Function#getDescription <em>Description</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Description</em>'.
+   * @see de.schneidertim.requirements.nlp.reqLNG.Function#getDescription()
+   * @see #getFunction()
+   * @generated
+   */
+  EReference getFunction_Description();
+
+  /**
    * Returns the meta object for class '{@link de.schneidertim.requirements.nlp.reqLNG.DomainObject <em>Domain Object</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1632,6 +1670,48 @@ public interface ReqLNGPackage extends EPackage
    * @generated
    */
   EClass getDomainObject();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link de.schneidertim.requirements.nlp.reqLNG.DomainObject#getSynonyms <em>Synonyms</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Synonyms</em>'.
+   * @see de.schneidertim.requirements.nlp.reqLNG.DomainObject#getSynonyms()
+   * @see #getDomainObject()
+   * @generated
+   */
+  EReference getDomainObject_Synonyms();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link de.schneidertim.requirements.nlp.reqLNG.DomainObject#getDescription <em>Description</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Description</em>'.
+   * @see de.schneidertim.requirements.nlp.reqLNG.DomainObject#getDescription()
+   * @see #getDomainObject()
+   * @generated
+   */
+  EReference getDomainObject_Description();
+
+  /**
+   * Returns the meta object for class '{@link de.schneidertim.requirements.nlp.reqLNG.FunctionSynonym <em>Function Synonym</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Function Synonym</em>'.
+   * @see de.schneidertim.requirements.nlp.reqLNG.FunctionSynonym
+   * @generated
+   */
+  EClass getFunctionSynonym();
+
+  /**
+   * Returns the meta object for class '{@link de.schneidertim.requirements.nlp.reqLNG.DomainObjectSynonym <em>Domain Object Synonym</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Domain Object Synonym</em>'.
+   * @see de.schneidertim.requirements.nlp.reqLNG.DomainObjectSynonym
+   * @generated
+   */
+  EClass getDomainObjectSynonym();
 
   /**
    * Returns the meta object for enum '{@link de.schneidertim.requirements.nlp.reqLNG.Liability <em>Liability</em>}'.
@@ -2167,22 +2247,6 @@ public interface ReqLNGPackage extends EPackage
     EAttribute CONCEPT_OR_SYNONYM__NAME = eINSTANCE.getConceptOrSynonym_Name();
 
     /**
-     * The meta object literal for the '<em><b>Synonyms</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CONCEPT_OR_SYNONYM__SYNONYMS = eINSTANCE.getConceptOrSynonym_Synonyms();
-
-    /**
-     * The meta object literal for the '<em><b>Description</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CONCEPT_OR_SYNONYM__DESCRIPTION = eINSTANCE.getConceptOrSynonym_Description();
-
-    /**
      * The meta object literal for the '{@link de.schneidertim.requirements.nlp.reqLNG.impl.FunctionImpl <em>Function</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2193,6 +2257,22 @@ public interface ReqLNGPackage extends EPackage
     EClass FUNCTION = eINSTANCE.getFunction();
 
     /**
+     * The meta object literal for the '<em><b>Synonyms</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FUNCTION__SYNONYMS = eINSTANCE.getFunction_Synonyms();
+
+    /**
+     * The meta object literal for the '<em><b>Description</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FUNCTION__DESCRIPTION = eINSTANCE.getFunction_Description();
+
+    /**
      * The meta object literal for the '{@link de.schneidertim.requirements.nlp.reqLNG.impl.DomainObjectImpl <em>Domain Object</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2201,6 +2281,42 @@ public interface ReqLNGPackage extends EPackage
      * @generated
      */
     EClass DOMAIN_OBJECT = eINSTANCE.getDomainObject();
+
+    /**
+     * The meta object literal for the '<em><b>Synonyms</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference DOMAIN_OBJECT__SYNONYMS = eINSTANCE.getDomainObject_Synonyms();
+
+    /**
+     * The meta object literal for the '<em><b>Description</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference DOMAIN_OBJECT__DESCRIPTION = eINSTANCE.getDomainObject_Description();
+
+    /**
+     * The meta object literal for the '{@link de.schneidertim.requirements.nlp.reqLNG.impl.FunctionSynonymImpl <em>Function Synonym</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.schneidertim.requirements.nlp.reqLNG.impl.FunctionSynonymImpl
+     * @see de.schneidertim.requirements.nlp.reqLNG.impl.ReqLNGPackageImpl#getFunctionSynonym()
+     * @generated
+     */
+    EClass FUNCTION_SYNONYM = eINSTANCE.getFunctionSynonym();
+
+    /**
+     * The meta object literal for the '{@link de.schneidertim.requirements.nlp.reqLNG.impl.DomainObjectSynonymImpl <em>Domain Object Synonym</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.schneidertim.requirements.nlp.reqLNG.impl.DomainObjectSynonymImpl
+     * @see de.schneidertim.requirements.nlp.reqLNG.impl.ReqLNGPackageImpl#getDomainObjectSynonym()
+     * @generated
+     */
+    EClass DOMAIN_OBJECT_SYNONYM = eINSTANCE.getDomainObjectSynonym();
 
     /**
      * The meta object literal for the '{@link de.schneidertim.requirements.nlp.reqLNG.Liability <em>Liability</em>}' enum.

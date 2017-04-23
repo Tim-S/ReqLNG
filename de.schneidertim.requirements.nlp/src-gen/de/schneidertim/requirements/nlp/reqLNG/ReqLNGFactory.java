@@ -204,6 +204,24 @@ public interface ReqLNGFactory extends EFactory
   DomainObject createDomainObject();
 
   /**
+   * Returns a new object of class '<em>Function Synonym</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Function Synonym</em>'.
+   * @generated
+   */
+  FunctionSynonym createFunctionSynonym();
+
+  /**
+   * Returns a new object of class '<em>Domain Object Synonym</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Domain Object Synonym</em>'.
+   * @generated
+   */
+  DomainObjectSynonym createDomainObjectSynonym();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

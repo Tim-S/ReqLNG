@@ -106,11 +106,19 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ConceptOrSynonym">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Function" eSuperTypes="#//ConceptOrSynonym">
     <eStructuralFeatures xsi:type="ecore:EReference" name="synonyms" upperBound="-1"
-        eType="#//ConceptOrSynonym" containment="true"/>
+        eType="#//FunctionSynonym" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="description" upperBound="-1"
         eType="#//SentenceWithReferences" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Function" eSuperTypes="#//ConceptOrSynonym"/>
-  <eClassifiers xsi:type="ecore:EClass" name="DomainObject" eSuperTypes="#//ConceptOrSynonym"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DomainObject" eSuperTypes="#//ConceptOrSynonym">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="synonyms" upperBound="-1"
+        eType="#//DomainObjectSynonym" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="description" upperBound="-1"
+        eType="#//SentenceWithReferences" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FunctionSynonym" eSuperTypes="#//ConceptOrSynonym"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DomainObjectSynonym" eSuperTypes="#//ConceptOrSynonym"/>
 </ecore:EPackage>

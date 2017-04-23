@@ -3,8 +3,6 @@
  */
 package de.schneidertim.requirements.nlp.reqLNG;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -17,8 +15,6 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link de.schneidertim.requirements.nlp.reqLNG.ConceptOrSynonym#getName <em>Name</em>}</li>
- *   <li>{@link de.schneidertim.requirements.nlp.reqLNG.ConceptOrSynonym#getSynonyms <em>Synonyms</em>}</li>
- *   <li>{@link de.schneidertim.requirements.nlp.reqLNG.ConceptOrSynonym#getDescription <em>Description</em>}</li>
  * </ul>
  *
  * @see de.schneidertim.requirements.nlp.reqLNG.ReqLNGPackage#getConceptOrSynonym()
@@ -52,37 +48,5 @@ public interface ConceptOrSynonym extends EObject
    * @generated
    */
   void setName(String value);
-
-  /**
-   * Returns the value of the '<em><b>Synonyms</b></em>' containment reference list.
-   * The list contents are of type {@link de.schneidertim.requirements.nlp.reqLNG.ConceptOrSynonym}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Synonyms</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Synonyms</em>' containment reference list.
-   * @see de.schneidertim.requirements.nlp.reqLNG.ReqLNGPackage#getConceptOrSynonym_Synonyms()
-   * @model containment="true"
-   * @generated
-   */
-  EList<ConceptOrSynonym> getSynonyms();
-
-  /**
-   * Returns the value of the '<em><b>Description</b></em>' containment reference list.
-   * The list contents are of type {@link de.schneidertim.requirements.nlp.reqLNG.SentenceWithReferences}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Description</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Description</em>' containment reference list.
-   * @see de.schneidertim.requirements.nlp.reqLNG.ReqLNGPackage#getConceptOrSynonym_Description()
-   * @model containment="true"
-   * @generated
-   */
-  EList<SentenceWithReferences> getDescription();
 
 } // ConceptOrSynonym
