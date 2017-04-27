@@ -6,30 +6,30 @@
          point="org.eclipse.ui.commands">
       <category
             name="Sample Category"
-            id="de.schneidertim.requirements.nlp.ConceptSelectionDialog.commands.category">
+            id="de.schneidertim.requirements.ConceptSelectionDialog.commands.category">
       </category>
       <command
             name="Sample Command"
-            categoryId="de.schneidertim.requirements.nlp.ConceptSelectionDialog.commands.category"
-            id="de.schneidertim.requirements.nlp.ConceptSelectionDialog.commands.sampleCommand">
+            categoryId="de.schneidertim.requirements.ConceptSelectionDialog.commands.category"
+            id="de.schneidertim.requirements.ConceptSelectionDialog.commands.sampleCommand">
       </command>
    </extension>
    <extension
          point="org.eclipse.ui.handlers">
       <handler
-            commandId="de.schneidertim.requirements.nlp.ConceptSelectionDialog.commands.sampleCommand"
-            class="de.schneidertim.requirements.nlp.conceptselectiondialog.handlers.SampleHandler">
+            commandId="de.schneidertim.requirements.ConceptSelectionDialog.commands.sampleCommand"
+            class="de.schneidertim.requirements.conceptselectiondialog.handlers.SampleHandler">
       </handler>
    </extension>
-   <extension
+  <!-- <extension
          point="org.eclipse.ui.bindings">
       <key
-            commandId="de.schneidertim.requirements.nlp.ConceptSelectionDialog.commands.sampleCommand"
+            commandId="de.schneidertim.requirements.ConceptSelectionDialog.commands.sampleCommand"
             contextId="org.eclipse.ui.contexts.window"
             sequence="M1+6"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
       </key>
-   </extension>
+   </extension>-->
    <extension
          point="org.eclipse.ui.menus">
       <menuContribution
@@ -37,23 +37,23 @@
          <menu
                label="Sample Menu"
                mnemonic="M"
-               id="de.schneidertim.requirements.nlp.ConceptSelectionDialog.menus.sampleMenu">
+               id="de.schneidertim.requirements.ConceptSelectionDialog.menus.sampleMenu">
             <command
-                  commandId="de.schneidertim.requirements.nlp.ConceptSelectionDialog.commands.sampleCommand"
+                  commandId="de.schneidertim.requirements.ConceptSelectionDialog.commands.sampleCommand"
                   mnemonic="S"
-                  id="de.schneidertim.requirements.nlp.ConceptSelectionDialog.menus.sampleCommand">
+                  id="de.schneidertim.requirements.ConceptSelectionDialog.menus.sampleCommand">
             </command>
          </menu>
       </menuContribution>
       <menuContribution
             locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
          <toolbar
-               id="de.schneidertim.requirements.nlp.ConceptSelectionDialog.toolbars.sampleToolbar">
+               id="de.schneidertim.requirements.ConceptSelectionDialog.toolbars.sampleToolbar">
             <command
-                  commandId="de.schneidertim.requirements.nlp.ConceptSelectionDialog.commands.sampleCommand"
+                  commandId="de.schneidertim.requirements.ConceptSelectionDialog.commands.sampleCommand"
                   icon="icons/sample.gif"
                   tooltip="Say hello world"
-                  id="de.schneidertim.requirements.nlp.ConceptSelectionDialog.toolbars.sampleCommand">
+                  id="de.schneidertim.requirements.ConceptSelectionDialog.toolbars.sampleCommand">
             </command>
          </toolbar>
       </menuContribution>

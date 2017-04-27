@@ -23,9 +23,12 @@ import java.util.function.Predicate;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.xtext.nodemodel.ICompositeNode;
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.CheckType;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 
@@ -81,21 +84,26 @@ public class NLPValidator extends AbstractReqLNGValidator {
   
   @Check(CheckType.NORMAL)
   public void extractFunctionFromObjectWithDetails(final RequirementEnd end) {
-    final TextWithConceptsOrSynonyms text = end.getObjectWithDetails();
-    final String string = this.converter.toString(text);
     final String pattern = "(?$verb[pos:VB|pos:VBD|pos:VBG|pos:VBN|pos:VBP|pos:VBZ])";
-    final MatchResult result = this.posRegex.match(string, pattern);
-    final Map<String, List<List<Token>>> tokensByGroup = result.getTokensByGroup();
-    final List<List<Token>> verbGroupsFound = tokensByGroup.get("verb");
+    EObject _eContainer = end.eContainer();
+    final Requirement requirement = ((Requirement) _eContainer);
+    final String reqString = this.converter.toString(requirement);
+    final TextWithConceptsOrSynonyms objectWithDetails = end.getObjectWithDetails();
+    final String owdString = this.converter.toString(objectWithDetails);
+    final MatchResult result = this.posRegex.match(owdString, pattern);
+    Map<String, List<List<Token>>> _tokensByGroup = result.getTokensByGroup();
+    final List<List<Token>> verbGroupsFound = _tokensByGroup.get("verb");
+    InputOutput.<String>println(reqString);
     for (final List<Token> verbs : verbGroupsFound) {
       {
         Token _head = IterableExtensions.<Token>head(verbs);
         String verb = _head.getWord();
+        InputOutput.<String>println(verb);
         Token _head_1 = IterableExtensions.<Token>head(verbs);
         String lemma = _head_1.getLemma();
         Token _head_2 = IterableExtensions.<Token>head(verbs);
         int verbPosition = _head_2.getBegin();
-        boolean _isReference = this.isReference(verb, text);
+        boolean _isReference = this.isReference(verb, objectWithDetails);
         boolean _not = (!_isReference);
         if (_not) {
           RequirementDocument _parentForEObject = this.getParentForEObject(end);
@@ -103,7 +111,7 @@ public class NLPValidator extends AbstractReqLNGValidator {
           EList<ConceptOrSynonym> _concepts = _glossary.getConcepts();
           Iterable<Function> _filter = Iterables.<Function>filter(_concepts, Function.class);
           final List<Function> existingFunctions = IterableExtensions.<Function>toList(_filter);
-          this.showFunctionQuickFixes(existingFunctions, text, verb, verbPosition, lemma);
+          this.showFunctionQuickFixes(existingFunctions, objectWithDetails, verb, verbPosition, lemma);
         }
       }
     }
@@ -192,7 +200,9 @@ public class NLPValidator extends AbstractReqLNGValidator {
   }
   
   public int calculateOffset(final TextWithConceptsOrSynonyms text, final String verb, final int verbPos) {
-    return 0;
+    final ICompositeNode actualNode = NodeModelUtils.findActualNodeFor(text);
+    final String string = NodeModelUtils.getTokenText(actualNode);
+    return actualNode.getOffset();
   }
   
   public final static String ADD_AS_NEW_FUNCTION = "INTRODUCE_FUNCTION";

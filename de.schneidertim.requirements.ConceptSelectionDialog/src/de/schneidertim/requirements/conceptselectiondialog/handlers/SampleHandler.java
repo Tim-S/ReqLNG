@@ -1,4 +1,4 @@
-package de.schneidertim.requirements.nlp.conceptselectiondialog.handlers;
+package de.schneidertim.requirements.conceptselectiondialog.handlers;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;

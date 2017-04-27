@@ -13,6 +13,7 @@ import de.schneidertim.requirements.nlp.reqLNG.Function
 import java.util.List
 import org.eclipse.ui.PlatformUI
 import de.schneidertim.requirements.nlp.reqLNG.ReqLNGFactory
+import de.schneidertim.requirements.conceptselectiondialog.ConceptSelectionDialog
 
 /**
  * Custom quickfixes.
@@ -31,40 +32,42 @@ class ReqLNGQuickfixProvider extends DefaultQuickfixProvider {
 //		]
 //	}
 
-//	@Fix(NLPValidator::CHOOSE_FUNCTION_AND_ADD_AS_SYNONYM)
-//	def chooseFunctionAndAddAsSynonym(Issue issue, IssueResolutionAcceptor acceptor) {
-//		acceptor.accept(issue, 'Choose Function and add as synonym', 'Choose Function and add as synonym', 'choose.png') [ context |
-//			val verb = issue.data.head
-//			val modified = context.xtextDocument.modify(
-//            [ resource |
-//				val model = resource.contents.filter(typeof(RequirementDocument)).head
-//				val functions = model.glossary.concepts.filter(typeof(Function)).toList
-//				val functionNames = functions.map[name].toList
-//				val dialog = showSelectionDialog(functionNames, DIALOG_TITLE.replace(":CONCEPT", "Functions"))
-//				if (dialog.result == null) {
-//					return false
-//				}
-//				val chosenFunctionName = dialog.result.head as String
-//				val chosenFunction = functions.filter(a|a.name.equals(chosenFunctionName)).head
-//				val synonym = ReqLNGFactory.eINSTANCE.createFunctionSynonym
-//				synonym.name = verb
-//				chosenFunction.synonyms.add(synonym)
-//			])
-//			if (modified) {
-//				val reference = "\"" + verb + "\""
-//				val text = context.xtextDocument.get(issue.offset, issue.length)
-//				val positionInText = text.indexOf(verb)
-//				context.xtextDocument.replace(issue.offset + positionInText, verb.length, reference)
-//			}
-//		]
-//	}
-//
-//	def showSelectionDialog(List<String> elements, String title) {
-//		val shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-//		val dialog = new ConceptSelectionDialog(shell, elements);
-//		dialog.setInitialPattern("?*")
-//		dialog.setTitle(title)
-//		dialog.open
-//		return dialog
-//	}
+	String DIALOG_TITLE=":CONCEPT"
+	
+	@Fix(NLPValidator::CHOOSE_FUNCTION_AND_ADD_AS_SYNONYM)
+	def chooseFunctionAndAddAsSynonym(Issue issue, IssueResolutionAcceptor acceptor) {
+		acceptor.accept(issue, 'Choose Function and add as synonym', 'Choose Function and add as synonym', 'choose.png') [ context |
+			val verb = issue.data.head
+			val modified = context.xtextDocument.modify(
+            [ resource |
+				val model = resource.contents.filter(typeof(RequirementDocument)).head
+				val functions = model.glossary.concepts.filter(typeof(Function)).toList
+				val functionNames = functions.map[name].toList
+				val dialog = showSelectionDialog(functionNames, DIALOG_TITLE.replace(":CONCEPT", "Functions"))
+				if (dialog.result == null) {
+					return false
+				}
+				val chosenFunctionName = dialog.result.head as String
+				val chosenFunction = functions.filter(a|a.name.equals(chosenFunctionName)).head
+				val synonym = ReqLNGFactory.eINSTANCE.createFunctionSynonym
+				synonym.name = verb
+				chosenFunction.synonyms.add(synonym)
+			])
+			if (modified) {
+				val reference = "\"" + verb + "\""
+				val text = context.xtextDocument.get(issue.offset, issue.length)
+				val positionInText = text.indexOf(verb)
+				context.xtextDocument.replace(issue.offset + positionInText, verb.length, reference)
+			}
+		]
+	}
+
+	def showSelectionDialog(List<String> elements, String title) {
+		val shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+		val dialog = new ConceptSelectionDialog(shell, elements);
+		dialog.setInitialPattern("?*")
+		dialog.setTitle(title)
+		dialog.open
+		return dialog
+	}
 }

@@ -14,6 +14,7 @@ import de.schneidertim.requirements.nlp.reqLNG.ReqLNGPackage
 import de.schneidertim.requirements.nlp.reqLNG.TextWithConceptsOrSynonyms
 import de.schneidertim.requirements.nlp.reqLNG.Function
 import de.schneidertim.requirements.nlp.reqLNG.RequirementDocument
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils
 
 class NLPValidator extends AbstractReqLNGValidator {
 	@Inject
@@ -59,19 +60,26 @@ class NLPValidator extends AbstractReqLNGValidator {
 
 	@Check(CheckType.NORMAL)
 	def extractFunctionFromObjectWithDetails(RequirementEnd end) {
-		val text = end.objectWithDetails
-		val string = converter.toString(text)
 		val pattern = '(?$verb[pos:VB|pos:VBD|pos:VBG|pos:VBN|pos:VBP|pos:VBZ])'
-		val result = posRegex.match(string, pattern)
-		val tokensByGroup = result.tokensByGroup
-		val verbGroupsFound = tokensByGroup.get("verb")
+		// get Requirement which contains this ReqEnd
+		val requirement = end.eContainer as Requirement
+		// transform Requirement to String
+		val reqString = converter.toString(requirement)
+		// get objectWithDetails part of RequirementEnd and transform it to string
+		val objectWithDetails = end.objectWithDetails
+		val owdString = converter.toString(objectWithDetails)
+		// get verbs in Requirement string 
+		val result = posRegex.match(owdString, pattern)
+		val verbGroupsFound = result.tokensByGroup.get("verb")
+		println(reqString)
 		for (verbs : verbGroupsFound) {
 			var String verb = verbs.head.word
+			println(verb)
 			var String lemma = verbs.head.lemma
 			var verbPosition = verbs.head.begin
-			if (!isReference(verb, text)) {
+			if (!isReference(verb, objectWithDetails)) {
 				val existingFunctions = getParentForEObject(end).glossary.concepts.filter(typeof(Function)).toList
-				showFunctionQuickFixes(existingFunctions, text, verb, verbPosition, lemma)
+				showFunctionQuickFixes(existingFunctions, objectWithDetails, verb, verbPosition, lemma)
 			}
 		}
 	}
@@ -120,7 +128,9 @@ class NLPValidator extends AbstractReqLNGValidator {
 	}
 	
 	def calculateOffset(TextWithConceptsOrSynonyms text, String verb, int verbPos) {
-		0 //TODO
+		val actualNode = NodeModelUtils.findActualNodeFor(text)
+		val string= NodeModelUtils.getTokenText(actualNode)
+		return actualNode.offset
 	}
 	
 	public static val ADD_AS_NEW_FUNCTION = "INTRODUCE_FUNCTION"
