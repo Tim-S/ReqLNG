@@ -71,7 +71,6 @@ class NLPValidator extends AbstractReqLNGValidator {
 		// get verbs in Requirement string 
 		val result = posRegex.match(owdString, pattern)
 		val verbGroupsFound = result.tokensByGroup.get("verb")
-		println(reqString)
 		for (verbs : verbGroupsFound) {
 			var String verb = verbs.head.word
 			println(verb)
@@ -129,8 +128,10 @@ class NLPValidator extends AbstractReqLNGValidator {
 	
 	def calculateOffset(TextWithConceptsOrSynonyms text, String verb, int verbPos) {
 		val actualNode = NodeModelUtils.findActualNodeFor(text)
-		val string= NodeModelUtils.getTokenText(actualNode)
-		return actualNode.offset
+		val string = NodeModelUtils.getTokenText(actualNode)
+		//offset of textual representation of TextWithConceptsOrSynonyms in XtextDocument 
+		//+ relative position of verb in this textual represenattion
+		return actualNode.offset + string.indexOf(verb) 
 	}
 	
 	public static val ADD_AS_NEW_FUNCTION = "INTRODUCE_FUNCTION"

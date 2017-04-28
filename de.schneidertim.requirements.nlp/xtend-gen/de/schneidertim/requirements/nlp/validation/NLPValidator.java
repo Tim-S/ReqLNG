@@ -93,7 +93,6 @@ public class NLPValidator extends AbstractReqLNGValidator {
     final MatchResult result = this.posRegex.match(owdString, pattern);
     Map<String, List<List<Token>>> _tokensByGroup = result.getTokensByGroup();
     final List<List<Token>> verbGroupsFound = _tokensByGroup.get("verb");
-    InputOutput.<String>println(reqString);
     for (final List<Token> verbs : verbGroupsFound) {
       {
         Token _head = IterableExtensions.<Token>head(verbs);
@@ -202,7 +201,9 @@ public class NLPValidator extends AbstractReqLNGValidator {
   public int calculateOffset(final TextWithConceptsOrSynonyms text, final String verb, final int verbPos) {
     final ICompositeNode actualNode = NodeModelUtils.findActualNodeFor(text);
     final String string = NodeModelUtils.getTokenText(actualNode);
-    return actualNode.getOffset();
+    int _offset = actualNode.getOffset();
+    int _indexOf = string.indexOf(verb);
+    return (_offset + _indexOf);
   }
   
   public final static String ADD_AS_NEW_FUNCTION = "INTRODUCE_FUNCTION";
