@@ -10,7 +10,7 @@ import org.eclipse.xtext.validation.ComposedChecks
  *
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
  */
- @ComposedChecks(validators = #[NLPValidator])
+ @ComposedChecks(validators = #[ContainsOneVerbValidator,VerbIsFunctionValidator])
 class ReqLNGValidator extends AbstractReqLNGValidator {
 	
 //	public static val INVALID_NAME = 'invalidName'

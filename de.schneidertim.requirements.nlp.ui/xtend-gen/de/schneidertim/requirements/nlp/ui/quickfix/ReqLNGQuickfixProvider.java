@@ -12,7 +12,7 @@ import de.schneidertim.requirements.nlp.reqLNG.FunctionSynonym;
 import de.schneidertim.requirements.nlp.reqLNG.Glossary;
 import de.schneidertim.requirements.nlp.reqLNG.ReqLNGFactory;
 import de.schneidertim.requirements.nlp.reqLNG.RequirementDocument;
-import de.schneidertim.requirements.nlp.validation.NLPValidator;
+import de.schneidertim.requirements.nlp.validation.VerbIsFunctionValidator;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -43,7 +43,7 @@ import org.eclipse.xtext.xbase.lib.ListExtensions;
 public class ReqLNGQuickfixProvider extends DefaultQuickfixProvider {
   private String DIALOG_TITLE = ":CONCEPT";
   
-  @Fix(NLPValidator.CHOOSE_FUNCTION_AND_ADD_AS_SYNONYM)
+  @Fix(VerbIsFunctionValidator.CHOOSE_FUNCTION_AND_ADD_AS_SYNONYM)
   public void chooseFunctionAndAddAsSynonym(final Issue issue, final IssueResolutionAcceptor acceptor) {
     final IModification _function = (IModificationContext context) -> {
       String[] _data = issue.getData();

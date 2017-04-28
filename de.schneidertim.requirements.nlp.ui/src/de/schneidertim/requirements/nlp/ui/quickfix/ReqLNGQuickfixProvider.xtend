@@ -4,7 +4,6 @@
 package de.schneidertim.requirements.nlp.ui.quickfix
 
 import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider
-import de.schneidertim.requirements.nlp.validation.NLPValidator
 import org.eclipse.xtext.ui.editor.quickfix.Fix
 import org.eclipse.xtext.validation.Issue
 import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor
@@ -14,6 +13,7 @@ import java.util.List
 import org.eclipse.ui.PlatformUI
 import de.schneidertim.requirements.nlp.reqLNG.ReqLNGFactory
 import de.schneidertim.requirements.conceptselectiondialog.ConceptSelectionDialog
+import de.schneidertim.requirements.nlp.validation.VerbIsFunctionValidator
 
 /**
  * Custom quickfixes.
@@ -34,7 +34,7 @@ class ReqLNGQuickfixProvider extends DefaultQuickfixProvider {
 
 	String DIALOG_TITLE=":CONCEPT"
 	
-	@Fix(NLPValidator::CHOOSE_FUNCTION_AND_ADD_AS_SYNONYM)
+	@Fix(VerbIsFunctionValidator::CHOOSE_FUNCTION_AND_ADD_AS_SYNONYM)
 	def chooseFunctionAndAddAsSynonym(Issue issue, IssueResolutionAcceptor acceptor) {
 		acceptor.accept(issue, 'Choose Function and add as synonym', 'Choose Function and add as synonym', 'choose.png') [ context |
 			val verb = issue.data.head

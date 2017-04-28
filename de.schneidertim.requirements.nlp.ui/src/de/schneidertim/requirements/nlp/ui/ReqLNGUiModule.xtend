@@ -4,7 +4,6 @@
 package de.schneidertim.requirements.nlp.ui
 
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
-import org.eclipse.xtext.ui.editor.autoedit.AbstractEditStrategyProvider
 
 /**
  * Use this class to register components to be used within the Eclipse IDE.

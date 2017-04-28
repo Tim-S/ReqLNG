@@ -4,7 +4,8 @@
 package de.schneidertim.requirements.nlp.validation;
 
 import de.schneidertim.requirements.nlp.validation.AbstractReqLNGValidator;
-import de.schneidertim.requirements.nlp.validation.NLPValidator;
+import de.schneidertim.requirements.nlp.validation.ContainsOneVerbValidator;
+import de.schneidertim.requirements.nlp.validation.VerbIsFunctionValidator;
 import org.eclipse.xtext.validation.ComposedChecks;
 
 /**
@@ -12,7 +13,7 @@ import org.eclipse.xtext.validation.ComposedChecks;
  * 
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
  */
-@ComposedChecks(validators = { NLPValidator.class })
+@ComposedChecks(validators = { ContainsOneVerbValidator.class, VerbIsFunctionValidator.class })
 @SuppressWarnings("all")
 public class ReqLNGValidator extends AbstractReqLNGValidator {
 }

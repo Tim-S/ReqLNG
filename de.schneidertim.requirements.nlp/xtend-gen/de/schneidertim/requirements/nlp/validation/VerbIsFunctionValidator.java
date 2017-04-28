@@ -11,7 +11,6 @@ import de.schneidertim.requirements.nlp.reqLNG.ConceptOrSynonym;
 import de.schneidertim.requirements.nlp.reqLNG.Function;
 import de.schneidertim.requirements.nlp.reqLNG.FunctionSynonym;
 import de.schneidertim.requirements.nlp.reqLNG.Glossary;
-import de.schneidertim.requirements.nlp.reqLNG.ReqLNGPackage;
 import de.schneidertim.requirements.nlp.reqLNG.Requirement;
 import de.schneidertim.requirements.nlp.reqLNG.RequirementDocument;
 import de.schneidertim.requirements.nlp.reqLNG.RequirementEnd;
@@ -22,18 +21,16 @@ import java.util.Map;
 import java.util.function.Predicate;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.CheckType;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 
 @SuppressWarnings("all")
-public class NLPValidator extends AbstractReqLNGValidator {
+public class VerbIsFunctionValidator extends AbstractReqLNGValidator {
   @Inject
   private IPOSRegexPattern posRegex;
   
@@ -41,53 +38,8 @@ public class NLPValidator extends AbstractReqLNGValidator {
   private BoilerplateToStringConverter converter;
   
   @Check(CheckType.NORMAL)
-  public void checkObjectWithDetailsContainsFunction(final RequirementEnd end) {
-    final String pattern = "(?$verb[pos:VB|pos:VBD|pos:VBG|pos:VBN|pos:VBP|pos:VBZ])";
-    EObject _eContainer = end.eContainer();
-    final Requirement requirement = ((Requirement) _eContainer);
-    final String reqString = this.converter.toString(requirement);
-    final MatchResult result = this.posRegex.match(reqString, pattern);
-    final TextWithConceptsOrSynonyms objectWithDetails = end.getObjectWithDetails();
-    final String owdString = this.converter.toString(objectWithDetails);
-    Map<String, List<List<Token>>> _tokensByGroup = result.getTokensByGroup();
-    final List<List<Token>> verbs = _tokensByGroup.get("verb");
-    final Iterable<Token> verbsInOwdString = this.countOccurrences(owdString, verbs);
-    final EReference literal = ReqLNGPackage.Literals.REQUIREMENT_END__OBJECT_WITH_DETAILS;
-    int _size = IterableExtensions.size(verbsInOwdString);
-    boolean _notEquals = (_size != 1);
-    if (_notEquals) {
-      this.error("This text must contain one verb which stands for a function of the system", literal);
-    }
-  }
-  
-  public Iterable<Token> countOccurrences(final String string, final List<List<Token>> lists) {
-    Iterable<Token> _flatten = Iterables.<Token>concat(lists);
-    final Function1<Token, Boolean> _function = (Token it) -> {
-      String _word = it.getWord();
-      return Boolean.valueOf(string.contains(_word));
-    };
-    return IterableExtensions.<Token>filter(_flatten, _function);
-  }
-  
-  public int numMatches(final String string, final String word) {
-    int index = string.indexOf(word);
-    if ((index == (-1))) {
-      return 0;
-    } else {
-      int _length = word.length();
-      int _plus = (index + _length);
-      String _substring = string.substring(_plus);
-      int _numMatches = this.numMatches(_substring, word);
-      return (1 + _numMatches);
-    }
-  }
-  
-  @Check(CheckType.NORMAL)
   public void extractFunctionFromObjectWithDetails(final RequirementEnd end) {
     final String pattern = "(?$verb[pos:VB|pos:VBD|pos:VBG|pos:VBN|pos:VBP|pos:VBZ])";
-    EObject _eContainer = end.eContainer();
-    final Requirement requirement = ((Requirement) _eContainer);
-    final String reqString = this.converter.toString(requirement);
     final TextWithConceptsOrSynonyms objectWithDetails = end.getObjectWithDetails();
     final String owdString = this.converter.toString(objectWithDetails);
     final MatchResult result = this.posRegex.match(owdString, pattern);
@@ -97,7 +49,6 @@ public class NLPValidator extends AbstractReqLNGValidator {
       {
         Token _head = IterableExtensions.<Token>head(verbs);
         String verb = _head.getWord();
-        InputOutput.<String>println(verb);
         Token _head_1 = IterableExtensions.<Token>head(verbs);
         String lemma = _head_1.getLemma();
         Token _head_2 = IterableExtensions.<Token>head(verbs);
@@ -176,21 +127,21 @@ public class NLPValidator extends AbstractReqLNGValidator {
     final String message = (("Function " + verb) + " found");
     boolean _contains = synonymNames.contains(verb);
     if (_contains) {
-      this.acceptWarning(message, text, offset, length, NLPValidator.REFERENCE_CONCEPT_OR_SYNONYM, verb);
+      this.acceptWarning(message, text, offset, length, VerbIsFunctionValidator.REFERENCE_CONCEPT_OR_SYNONYM, verb);
     } else {
       if ((functionNames.contains(lemma) && verb.equals(lemma))) {
-        this.acceptWarning(message, text, offset, length, NLPValidator.REFERENCE_CONCEPT_OR_SYNONYM, verb);
+        this.acceptWarning(message, text, offset, length, VerbIsFunctionValidator.REFERENCE_CONCEPT_OR_SYNONYM, verb);
       } else {
         if ((functionNames.contains(lemma) && (!verb.equals(lemma)))) {
-          this.acceptWarning(message, text, offset, length, NLPValidator.ADD_AS_SYNONYM_FOR_EXISTING_FUNCTION, verb, lemma);
+          this.acceptWarning(message, text, offset, length, VerbIsFunctionValidator.ADD_AS_SYNONYM_FOR_EXISTING_FUNCTION, verb, lemma);
         } else {
           if (((!functionNames.contains(lemma)) && verb.equals(lemma))) {
-            this.acceptWarning(message, text, offset, length, NLPValidator.ADD_AS_NEW_FUNCTION, verb, lemma);
-            this.acceptWarning(message, text, offset, length, NLPValidator.CHOOSE_FUNCTION_AND_ADD_AS_SYNONYM, verb);
+            this.acceptWarning(message, text, offset, length, VerbIsFunctionValidator.ADD_AS_NEW_FUNCTION, verb, lemma);
+            this.acceptWarning(message, text, offset, length, VerbIsFunctionValidator.CHOOSE_FUNCTION_AND_ADD_AS_SYNONYM, verb);
           } else {
             if (((!functionNames.contains(lemma)) && (!verb.equals(lemma)))) {
-              this.acceptWarning(message, text, offset, length, NLPValidator.CREATE_NEW_FUNCTION_AND_ADD_AS_SYNONYM, verb, lemma);
-              this.acceptWarning(message, text, offset, length, NLPValidator.CHOOSE_FUNCTION_AND_ADD_AS_SYNONYM, verb);
+              this.acceptWarning(message, text, offset, length, VerbIsFunctionValidator.CREATE_NEW_FUNCTION_AND_ADD_AS_SYNONYM, verb, lemma);
+              this.acceptWarning(message, text, offset, length, VerbIsFunctionValidator.CHOOSE_FUNCTION_AND_ADD_AS_SYNONYM, verb);
             }
           }
         }
