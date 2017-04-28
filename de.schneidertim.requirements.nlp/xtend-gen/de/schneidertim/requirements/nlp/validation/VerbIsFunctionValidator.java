@@ -26,6 +26,7 @@ import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.CheckType;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 
@@ -122,6 +123,7 @@ public class VerbIsFunctionValidator extends AbstractReqLNGValidator {
     };
     List<String> _map_2 = ListExtensions.<Function, String>map(functions, _function_2);
     final List<String> functionNames = IterableExtensions.<String>toList(_map_2);
+    InputOutput.<List<String>>println(functionNames);
     final int offset = this.calculateOffset(text, verb, verbPos);
     final int length = verb.length();
     final String message = (("Function " + verb) + " found");

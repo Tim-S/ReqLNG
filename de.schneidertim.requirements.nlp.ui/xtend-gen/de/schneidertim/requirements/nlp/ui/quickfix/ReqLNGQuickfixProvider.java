@@ -105,6 +105,44 @@ public class ReqLNGQuickfixProvider extends DefaultQuickfixProvider {
     acceptor.accept(issue, "Choose Function and add as synonym", "Choose Function and add as synonym", "choose.png", _function);
   }
   
+  @Fix(VerbIsFunctionValidator.ADD_AS_NEW_FUNCTION)
+  public void addAsNewFunction(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    final IModification _function = (IModificationContext context) -> {
+      String[] _data = issue.getData();
+      final String verb = IterableExtensions.<String>head(((Iterable<String>)Conversions.doWrapArray(_data)));
+      IXtextDocument _xtextDocument = context.getXtextDocument();
+      final IUnitOfWork<Boolean, XtextResource> _function_1 = (XtextResource resource) -> {
+        boolean _xblockexpression = false;
+        {
+          EList<EObject> _contents = resource.getContents();
+          Iterable<RequirementDocument> _filter = Iterables.<RequirementDocument>filter(_contents, RequirementDocument.class);
+          final RequirementDocument model = IterableExtensions.<RequirementDocument>head(_filter);
+          final Function function = ReqLNGFactory.eINSTANCE.createFunction();
+          function.setName(verb);
+          Glossary _glossary = model.getGlossary();
+          EList<ConceptOrSynonym> _concepts = _glossary.getConcepts();
+          _xblockexpression = _concepts.add(function);
+        }
+        return Boolean.valueOf(_xblockexpression);
+      };
+      final Boolean modified = _xtextDocument.<Boolean>modify(_function_1);
+      if ((modified).booleanValue()) {
+        final String reference = (("\"" + verb) + "\"");
+        IXtextDocument _xtextDocument_1 = context.getXtextDocument();
+        Integer _offset = issue.getOffset();
+        Integer _length = issue.getLength();
+        final String text = _xtextDocument_1.get((_offset).intValue(), (_length).intValue());
+        final int positionInText = text.indexOf(verb);
+        IXtextDocument _xtextDocument_2 = context.getXtextDocument();
+        Integer _offset_1 = issue.getOffset();
+        int _plus = ((_offset_1).intValue() + positionInText);
+        int _length_1 = verb.length();
+        _xtextDocument_2.replace(_plus, _length_1, reference);
+      }
+    };
+    acceptor.accept(issue, "Add as new Function", "Add as new Function", "choose.png", _function);
+  }
+  
   public ConceptSelectionDialog showSelectionDialog(final List<String> elements, final String title) {
     IWorkbench _workbench = PlatformUI.getWorkbench();
     IWorkbenchWindow _activeWorkbenchWindow = _workbench.getActiveWorkbenchWindow();

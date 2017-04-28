@@ -61,6 +61,25 @@ class ReqLNGQuickfixProvider extends DefaultQuickfixProvider {
 			}
 		]
 	}
+	@Fix(VerbIsFunctionValidator::ADD_AS_NEW_FUNCTION)
+	def addAsNewFunction(Issue issue, IssueResolutionAcceptor acceptor) {
+		acceptor.accept(issue, 'Add as new Function', 'Add as new Function', 'choose.png') [ context |
+			val verb = issue.data.head
+			val modified = context.xtextDocument.modify(
+            [ resource |
+				val model = resource.contents.filter(typeof(RequirementDocument)).head
+				val function = ReqLNGFactory.eINSTANCE.createFunction
+				function.name = verb
+				model.glossary.concepts.add(function)
+			])
+			if (modified) {
+				val reference = "\"" + verb + "\""
+				val text = context.xtextDocument.get(issue.offset, issue.length)
+				val positionInText = text.indexOf(verb)
+				context.xtextDocument.replace(issue.offset + positionInText, verb.length, reference)
+			}
+		]
+	}
 
 	def showSelectionDialog(List<String> elements, String title) {
 		val shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
