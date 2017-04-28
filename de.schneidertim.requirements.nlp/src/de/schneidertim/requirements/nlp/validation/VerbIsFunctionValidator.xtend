@@ -60,7 +60,6 @@ class VerbIsFunctionValidator extends AbstractReqLNGValidator {
 		val synonyms = functions.map[f|f.synonyms].flatten.toList
 		val synonymNames = synonyms.map[name].toList
 		val functionNames = functions.map[name].toList
-		println(functionNames)
 		val offset = calculateOffset(text, verb, verbPos);
 		val length = verb.length
 		val message = "Function " + verb + " found"
