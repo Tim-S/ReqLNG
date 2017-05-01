@@ -25,7 +25,7 @@ Export-Package: de.schneidertim.requirements.nlp.validation,
  de.schneidertim.requirements.nlp.reqLNG.util,
  de.schneidertim.requirements.nlp.parser.antlr,
  de.schneidertim.requirements.nlp.generator,
- de.schneidertim.requirements.nlp.reqLNG.impl
+ de.schneidertim.requirements.nlp.reqLNG.impl,
+ de.schneidertim.requirements.nlp.formatting2
 Import-Package: org.apache.log4j
-Bundle-ClassPath: lib/POSRegex-0.0.2.jar,
- . 
+Bundle-ClassPath: lib/POSRegex-0.0.2.jar,.

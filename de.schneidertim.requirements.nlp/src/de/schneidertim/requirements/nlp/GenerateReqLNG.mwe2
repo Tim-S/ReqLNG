@@ -6,7 +6,7 @@ import org.eclipse.xtext.xtext.generator.model.project.*
 var rootPath = ".."
 
 Workflow {
-	
+
 	component = XtextGenerator {
 		configuration = {
 			project = StandardProjectConfig {
@@ -31,15 +31,18 @@ Workflow {
 		language = StandardLanguage {
 			name = "de.schneidertim.requirements.nlp.ReqLNG"
 			fileExtensions = "reqlng"
-
 			serializer = {
 				generateStub = false
 			}
 			validator = {
-				// composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
+			// composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
 			}
 			//To avoid qualified names especially for Synonyms:
 			fragment = exporting.SimpleNamesFragment2 {}
+
+			formatter = {
+				generateStub=true
+			}
 		}
 	}
 }
